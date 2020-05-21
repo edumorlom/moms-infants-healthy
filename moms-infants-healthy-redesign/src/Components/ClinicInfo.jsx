@@ -2,10 +2,10 @@ import {View, Linking, Text, ScrollView} from "react-native";
 import React from "react";
 import ClinicSelectionButton from "./ClinicSelectionButton";
 import ActionButton from "./ActionButton";
-import directionsArrow from './directions-arrow.png'
+import directionsArrow from '../../assets/directions-arrow.png'
 import appStyles from './AppStyles'
-import visitSiteIcon from './safari-visit-site.png'
-import callIcon from './call-icon.png'
+import visitSiteIcon from '../../assets/safari-visit-site.png'
+import callIcon from '../../assets/call-icon.png'
 
 
 export default function ClinicInfo(props){

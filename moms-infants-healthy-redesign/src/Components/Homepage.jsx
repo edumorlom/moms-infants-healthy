@@ -33,7 +33,8 @@ export default class Homepage extends React.Component {
     }
 
     setFullPanel = (fullPanel) => {
-        this.setState({fullPanel: fullPanel})
+        this.state.fullPanel && !fullPanel ? this.setState({fullPanel: fullPanel}) : null;
+        ((!this.state.fullPanel) && fullPanel) ? this.setState({fullPanel: fullPanel}) : null
     };
 
     setClinicToView = (clinic) => {
@@ -46,7 +47,7 @@ export default class Homepage extends React.Component {
     };
 
     goBack = () => {
-        if (this.state.lowerPanelContent === 'selection') return
+        if (this.state.lowerPanelContent === 'selection') return;
         if (this.state.lowerPanelContent === 'findCare') this.setLowerPanelContent('selection');
         if (this.state.lowerPanelContent === 'clinicInfo') this.setLowerPanelContent('findCare');
         if (this.state.lowerPanelContent === 'learn') this.setLowerPanelContent('selection');
@@ -58,13 +59,15 @@ export default class Homepage extends React.Component {
         return (
             <View style={appStyles.container}>
                 <Map onPress={() => this.setFullPanel(false)}
+                      setFullPanel={this.setFullPanel}
                       clinicToView={this.state.clinicToView}
                       setClinicToView={this.setClinicToView}
                       clinics={this.state.clinics}
                       currentLocation={this.state.currentLocation}
                       getLocalizedText={this.props.getLocalizedText}/>
                 <SOSButton/>
-                <LowerPanel setFullPanel={this.setFullPanel}
+                <LowerPanel onPress={() => this.setFullPanel(true)}
+                            setFullPanel={() => this.setFullPanel(!this.state.fullPanel)}
                             fullPanel={this.state.fullPanel}
                             fullName={this.props.fullName}
                             logout={this.props.logout}

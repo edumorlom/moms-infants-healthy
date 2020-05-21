@@ -1,7 +1,7 @@
 import {Image, Keyboard, Text, TouchableWithoutFeedback, View} from 'react-native';
 import React from "react";
 import appStyles from './AppStyles'
-import dnaLoading from "./dna-loading.gif";
+import dnaLoading from "../../assets/dna-loading.gif";
 
 
 export default class SignUpLoading extends React.Component {

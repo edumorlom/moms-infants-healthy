@@ -3,7 +3,7 @@ import appStyles from "./AppStyles";
 import React from "react";
 import * as Haptics from "expo-haptics";
 import GestureRecognizer from "react-native-swipe-gestures";
-import swipeUpGif from "./swipe-up-arrow.gif";
+import swipeUpGif from "../../assets/swipe-up-arrow.gif";
 
 export default function SwipeUp(props){
 

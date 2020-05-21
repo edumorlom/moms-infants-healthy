@@ -1,7 +1,7 @@
-import en_US from './en_US.json'
-import es_ES from './es_ES.json'
-import pt_BR from './pt_BR.json'
-import zh_Hans from './zh_Hans.json'
+import en_US from '../en_US.json'
+import es_ES from '../es_ES.json'
+import pt_BR from '../pt_BR.json'
+import zh_Hans from '../zh_Hans.json'
 
 
 export default function getLocalizedText(deviceLanguage, key) {

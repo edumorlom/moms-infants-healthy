@@ -8,7 +8,7 @@
       "android",
       "web"
     ],
-    "version": "0.0.51",
+    "version": "0.0.52",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -26,11 +26,14 @@
       "supportsTablet": true,
       "bundleIdentifier": "edu.fiu.moms-infants-healthy",
       "config": {
-        "googleMapsApiKey": "AIzaSyARYjdvM_M9wm246SfF_1s7zDCe6I7K8dI"
+        "googleMapsApiKey": "AIzaSyBOZ03ddF4C7EHTz5hQPV3IkE-q2BN_cEw"
       }
     },
     "android": {
-      "package": "edu.fiu.momsInfantsHealthy"
+      "package": "edu.fiu.momsInfantsHealthy",
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyDZIfZXvGNacdzn-cBHdrzYakwHmh4DXok" }   
+     }
     },
     "description": "",
     "githubUrl": "https://github.com/edumorlom/moms-infants-healthy"

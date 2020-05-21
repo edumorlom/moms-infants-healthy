@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView} from "react-native";
 import SelectionButtonImageOnRight from "./ClinicSelectionButton";
-import clinicLogo from './clinic-logo.png'
+import clinicLogo from '../../assets/clinic-logo.png'
 import Resources from './Resources'
 import LearnSelectionButton from "./LearnSelectionButton";
 

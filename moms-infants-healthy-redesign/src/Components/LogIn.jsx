@@ -11,8 +11,8 @@ import appStyles from './AppStyles'
 import Button from "./Button";
 import TextInput from "./TextInput";
 import SwipeUp from "./SwipeUp";
-import background from './background.gif'
-import loginMainImage from "./child.png";
+import background from '../../assets/background.gif'
+import loginMainImage from "../../assets/child.png";
 
 export default class LogIn extends React.Component {
 

@@ -1,7 +1,7 @@
 import {Image, Text, View} from "react-native";
 import appStyles from "./AppStyles";
 import React from "react";
-import miamiImage from "./palm-tree-beach.png";
+import miamiImage from "../../assets/palm-tree-beach.png";
 import Button from "./Button";
 
 export default function MustLiveInMiami(props) {

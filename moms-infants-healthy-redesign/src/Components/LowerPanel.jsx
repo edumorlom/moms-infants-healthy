@@ -18,11 +18,13 @@ export default class LowerPanel extends React.Component {
 
     transition = null;
 
+    
+
     goUp = () => {
         clearInterval(this.transition);
         this.transition = setInterval( () => {
             let panelStyle = {...appStyles.lowerPanel};
-            panelStyle["bottom"] = this.state.panelStyle.bottom + 25;
+            panelStyle["bottom"] =  this.state.panelStyle.bottom + 25;
 
             if (this.state.panelStyle.bottom >= 0) {
                 clearInterval(this.transition);
@@ -49,6 +51,10 @@ export default class LowerPanel extends React.Component {
     };
 
     showContent = () => {
+        
+            {this.props.lowerPanelContent !== 'selection' && <LowerPanelHeader onPress = {this.props.onPress} goBack ={this.props.goBack} 
+                lowerPanelContent={this.props.lowerPanelContent} getLocalizedText={this.props.getLocalizedText} 
+                setFullPanel={this.props.setFullPanel} fullPanel={this.props.fullPanel}/>}
         if (this.props.lowerPanelContent === 'findCare') {
             return <FindCare clinics={this.props.clinics}
                              setClinicToView={this.props.setClinicToView}
@@ -66,9 +72,9 @@ export default class LowerPanel extends React.Component {
                                         getLocalizedText={this.props.getLocalizedText}/>
         }
     };
+    
 
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate(prevProps) {
         if (prevProps.fullPanel && !this.props.fullPanel) {
             this.goDown()
         } else if (!prevProps.fullPanel && this.props.fullPanel){
@@ -76,10 +82,13 @@ export default class LowerPanel extends React.Component {
         }
     }
 
+    //movePanel(fullPanel)
+
     render() {
         return (
             <View style={{...this.state.panelStyle, overflow: 'hidden'}}>
-                {this.props.lowerPanelContent !== 'selection' && <LowerPanelHeader onPress={this.props.goBack} lowerPanelContent={this.props.lowerPanelContent} getLocalizedText={this.props.getLocalizedText}/>}
+                {this.props.lowerPanelContent !== 'selection' && <LowerPanelHeader onPress = {this.props.onPress} goBack ={this.props.goBack} 
+                lowerPanelContent={this.props.lowerPanelContent} getLocalizedText={this.props.getLocalizedText} setFullPanel={this.props.setFullPanel} fullPanel={this.props.fullPanel}/>}
                 {this.showContent()}
             </View>
         )

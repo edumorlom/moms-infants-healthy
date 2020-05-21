@@ -1,10 +1,10 @@
 import React from 'react';
-import LogIn from "./src/LogIn";
-import SignUp from "./src/SignUp";
-import Homepage from "./src/Homepage";
-import Firebase from "./src/Firebase";
+import LogIn from "./src/Components/LogIn";
+import SignUp from "./src/Components/SignUp";
+import Homepage from "./src/Components/Homepage";
+import Firebase from "./src/Components/Firebase";
 import {AsyncStorage, NativeModules} from 'react-native';
-import getLocalizedText from "./src/getLocalizedText";
+import getLocalizedText from "./src/Components/getLocalizedText";
 
 
 
@@ -16,7 +16,7 @@ export default class App extends React.Component {
     password: null,
     fullName: null,
     babyGender: null,
-    deviceLanguage: 'ios' ? NativeModules.SettingsManager.settings.AppleLocale || NativeModules.SettingsManager.settings.AppleLanguages[0] : NativeModules.I18nManager.localeIdentifier
+    deviceLanguage: Platform.OS === 'ios' ? NativeModules.SettingsManager.settings.AppleLocale || NativeModules.SettingsManager.settings.AppleLanguages[0] : NativeModules.I18nManager.localeIdentifier
   };
 
   constructor(props) {
