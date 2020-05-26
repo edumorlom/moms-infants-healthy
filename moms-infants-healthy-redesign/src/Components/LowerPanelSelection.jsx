@@ -6,10 +6,12 @@ import WelcomeUserBanner from "./WelcomeUserBanner";
 import SelectionButton from "./SelectionButton";
 import GestureRecognizer from "react-native-swipe-gestures";
 import { FontAwesome5 } from '@expo/vector-icons'; 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+
 
 
 export default function LowerPanelSelection(props) {
+    
     return (
         <GestureRecognizer
             onSwipeUp={() => props.setFullPanel(true)}
@@ -17,7 +19,12 @@ export default function LowerPanelSelection(props) {
             config={{velocityThreshold: 0.4, directionalOffsetThreshold: 100}}
             style={{width: '100%', height: '100%', paddingTop: '10%' , alignItems: 'center'}}>
             <WelcomeUserBanner fullName={props.fullName} logout={props.logout} getLocalizedText={props.getLocalizedText}/>
-            <FontAwesome5  name='user-edit' style={styles.userEditStyle}/>
+
+            <TouchableOpacity 
+             onPress={() => props.setLowerPanelContent('edit')} text={props.getLocalizedText('edit')}>
+            <FontAwesome5  name='user-edit' size={40} style={styles.userEditStyle} />
+            </TouchableOpacity>
+
             <SelectionButton text={props.getLocalizedText("findCare")} icon={clinicLogo}
                              onPress={() => props.setLowerPanelContent('findCare')}/>
             <SelectionButton text={props.getLocalizedText("learn")} icon={babyBottle}
@@ -32,12 +39,12 @@ export default function LowerPanelSelection(props) {
 
 const styles = StyleSheet.create({
     userEditStyle: {
-    // borderWidth: 1,
-     //borderColor: 'red',
-       position: 'absolute',
-       paddingTop: 70,
-       paddingRight: 40,
-       fontSize: 40,
-      alignSelf: 'flex-end',
+    //  borderWidth: 1,
+    //  borderColor: 'red',
+     position: 'absolute',
+     left: 120,
+     bottom: 30,
+     //  alignSelf: 'flex-start',
+
     }
 });

@@ -102,7 +102,7 @@ export default class App extends React.Component {
         this.setAppState({screen: 'login'})
       }
     } else {
-      return (<Homepage setAppState={this.setAppState} fullName={this.state.fullName} logout={this.logout} getLocalizedText={this.getLocalizedText}/>)
+      return (<Homepage setAppState={this.setAppState} fullName={this.state.fullName} email={this.state.email} password={this.state.password} logout={this.logout} getLocalizedText={this.getLocalizedText}/>)
     }
   }
 }

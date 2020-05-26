@@ -52,6 +52,7 @@ export default class Homepage extends React.Component {
         if (this.state.lowerPanelContent === 'clinicInfo') this.setLowerPanelContent('findCare');
         if (this.state.lowerPanelContent === 'learn') this.setLowerPanelContent('selection');
         if (this.state.lowerPanelContent === 'tips') this.setLowerPanelContent('selection');
+        if (this.state.lowerPanelContent === 'edit') this.setLowerPanelContent('selection'); //this was add for editSCreen by alex
     };
 
 
@@ -77,7 +78,10 @@ export default class Homepage extends React.Component {
                             lowerPanelContent={this.state.lowerPanelContent}
                             goBack={this.goBack}
                             setLowerPanelContent={this.setLowerPanelContent}
-                            getLocalizedText={this.props.getLocalizedText}/>
+                            getLocalizedText={this.props.getLocalizedText}
+                            email={this.props.email}
+                            password={this.props.password}
+                            />
             </View>
         )
     }
