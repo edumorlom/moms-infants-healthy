@@ -2,6 +2,7 @@ import * as firebase from 'firebase';
 import getLocalizedText from "./getLocalizedText";
 import {NativeModules} from "react-native";
 import firebaseAccount from '../firebase_account.json'
+import getLangMessage from '../Components/getLangMessage';
 
 
 export default class Firebase {
@@ -66,6 +67,39 @@ export default class Firebase {
                 }
             );
     }
+
+    async babyMileStonesMessage(uid){
+        if(!uid) return;
+        await this.getUserInfo(uid).on('value', (snapshot) => {
+           const info = snapshot.val();
+           const phoneNumber = info.phoneNumber;
+           let message = getLangMessage( 'en', 3);
+           if (!this.checkPhone(phoneNumber)) {
+               throw console.log('Must be a valid E614 format')
+           }
+            fetch(
+            `https://us-central1-numom-57642.cloudfunctions.net/sendCustomSMS?phoneNumber=${7865645533}`,
+               {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                },
+                body: JSON.stringify({message: message})
+               }
+           ).catch(error => {
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+             // ADD THIS THROW error
+              throw error;
+            });
+       }, e => {alert("ERROR: Unable to access to your account!");})
+    }
+
+     // Validate E164 Format
+     checkPhone = (num) => {
+        return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(num);
+    };
+
 
     getUserInfo = (uid) => firebase.database().ref('users/' + uid);
 }
