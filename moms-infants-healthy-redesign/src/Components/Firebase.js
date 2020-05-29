@@ -73,7 +73,8 @@ export default class Firebase {
         await this.getUserInfo(uid).on('value', (snapshot) => {
            const info = snapshot.val();
            const phoneNumber = info.phoneNumber;
-           let message = getLangMessage( 'en', 3);
+           let infant = info.infant;
+           let message = getLangMessage(2, infant);
            if (!this.checkPhone(phoneNumber)) {
                throw console.log('Must be a valid E614 format')
            }
