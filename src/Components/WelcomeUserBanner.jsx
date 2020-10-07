@@ -2,7 +2,7 @@ import {Text, TouchableHighlight, View, Alert} from "react-native";
 import appStyles from "./AppStyles";
 import React, { useState } from 'react';
 import {getUid, getUserInfo} from "../Firebase";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default WelcomeUserBanner = props => {
 

@@ -16,7 +16,7 @@ import WelcomeUserBanner from "./WelcomeUserBanner";
 import SelectionButton from "./SelectionButton";
 import GestureRecognizer from "react-native-swipe-gestures";
 import { MaterialIcons } from "@expo/vector-icons";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 import appStyles from "./AppStyles";
 import Button from "./Button";
 

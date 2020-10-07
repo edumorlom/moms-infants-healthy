@@ -3,7 +3,7 @@ import appStyles from "./AppStyles";
 import React from "react";
 import miamiImage from "../../assets/palm-tree-beach.png";
 import Button from "./Button";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default function MustLiveInMiami(props) {
 

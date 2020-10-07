@@ -3,7 +3,7 @@ import { TouchableHighlight, Text, View, ScrollView } from "react-native";
 import appStyles from "./AppStyles";
 import SelectionButton from "./SelectionButton";
 import butterfly from "../../assets/butterfly.png";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 import FemaleCondom from "../../assets/FC.png";
 
 export default function learn(props) {

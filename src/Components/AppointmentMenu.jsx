@@ -2,7 +2,7 @@ import { Text, TouchableHighlight, View, Alert } from "react-native";
 import appStyles, { borderRadius, shadow } from "./AppStyles";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default function AppointmentMenu(props) {
   const { name, date, time, address, extra, eventId } = props.appointments?.val();

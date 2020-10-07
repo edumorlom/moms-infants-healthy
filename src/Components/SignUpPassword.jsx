@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AsyncStorage, Keyboard, Text, TextInput as TextBox, TouchableOpacity, View, TouchableHighlight } from 'react-native';
 import appStyles from './AppStyles';
 import Button from "./Button";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default SignUpPassword = (props) => {
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TouchableHighlight, Text, View, ScrollView, Image } from "react-native";
 import appStyles from "./AppStyles";
 import SelectionButton from "./SelectionButton";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 import FemaleCondomDoDont from "./FemaleCondomDoDonts"
 import FemaleCondomSteps from "./FemaleCondomSteps"
 import FemaleCondomMain from "./FemaleCondomMain"

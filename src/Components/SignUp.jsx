@@ -10,7 +10,7 @@ import SignUpLoading from "./SignUpLoading";
 import SignUpYesorNo from "./SignUpYesorNo";
 import MustLiveInMiami from "./MustLiveInMiami";
 import SignUpHeader from "./SignUpHeader";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default function SignUp(props) {
   const [index, setIndex] = useState(0);

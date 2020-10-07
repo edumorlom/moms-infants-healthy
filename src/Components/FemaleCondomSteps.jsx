@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableHighlight, Text, View, ScrollView, Button } from "react-native";
 import appStyles from "./AppStyles";
 import BetterMenu from "./BetterMenu";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 import FemaleCondomStep from "./FemaleCondomStep"
 
 

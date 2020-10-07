@@ -45,6 +45,7 @@ export default LowerPanel = props => {
       Animated.timing(moveAnim, {
         toValue: destination,
         duration: 150,
+        useNativeDriver: true,
       }).start();
     
   };

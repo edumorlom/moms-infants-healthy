@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import appStyles, { borderRadius, shadow } from "./AppStyles";
 import { Feather } from "@expo/vector-icons";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 import { AntDesign } from '@expo/vector-icons';
 import Button from "./Button";
 import Avatar from "../../assets/Avatar-Doctor.jpg";

@@ -7,7 +7,7 @@ import Button from "./Button";
 import filterButton from "../../assets/Filter.png";
 import * as Haptics from "expo-haptics";
 import GestureRecognizer from "react-native-swipe-gestures";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 //This component is the header for the lowerPanel
 //It holds the backButton and the panelName

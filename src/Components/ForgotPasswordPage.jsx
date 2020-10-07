@@ -5,7 +5,7 @@ import appStyles from "./AppStyles";
 import BackButton from "./Button"
 import * as Haptics from "expo-haptics";
 import { passwordReset } from '../Firebase';
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 import Button from './Button';
 
 

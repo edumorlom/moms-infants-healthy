@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TextInput } from 'react-native';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import appStyles from "./AppStyles";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 import Button from "./Button";
 import { useState } from 'react';
 import { getUid, addReference } from "../Firebase";

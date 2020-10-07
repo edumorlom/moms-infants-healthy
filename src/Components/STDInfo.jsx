@@ -3,7 +3,7 @@ import { TouchableHighlight, Text, View, ScrollView } from "react-native";
 import appStyles from "./AppStyles";
 import Menu from "./Menu";
 import STD from "./STD";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default function STDInfo(props) {
   console.log(props.STDToView);

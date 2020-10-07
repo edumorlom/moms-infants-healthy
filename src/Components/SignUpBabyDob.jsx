@@ -3,7 +3,7 @@ import { Keyboard, Text, TouchableOpacity, View, AsyncStorage, TouchableHighligh
 import appStyles from "./AppStyles";
 import Button from "./Button";
 import { TextInputMask } from "react-native-masked-text";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default SignUpBabyDob = (props) => {
 

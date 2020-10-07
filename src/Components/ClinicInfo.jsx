@@ -6,7 +6,7 @@ import directionsArrow from '../../assets/directions-arrow.png'
 import appStyles from './AppStyles'
 import visitSiteIcon from '../../assets/safari-visit-site.png'
 import callIcon from '../../assets/call-icon.png'
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default function ClinicInfo(props){
 

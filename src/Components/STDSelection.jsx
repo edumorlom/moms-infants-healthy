@@ -4,7 +4,7 @@ import appStyles from "./AppStyles";
 import SelectionButton from "./SelectionButton";
 import STD from "./STD";
 import STDResources from "./STDResources"
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default function STDSelection(props) {
   let onPress = (std) => {

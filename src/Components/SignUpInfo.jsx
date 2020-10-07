@@ -3,7 +3,7 @@ import { AsyncStorage, Keyboard, Text, TextInput as TextBox, TouchableOpacity, V
 import { TextInputMask } from 'react-native-masked-text';
 import appStyles from './AppStyles';
 import Button from "./Button";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default function SignUpInfo(props) {
     

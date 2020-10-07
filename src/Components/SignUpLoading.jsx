@@ -2,7 +2,7 @@ import {Image, Keyboard, Text, TouchableWithoutFeedback, View} from 'react-nativ
 import React, { useEffect, useState } from "react";
 import appStyles from './AppStyles'
 import dnaLoading from "../../assets/dna-loading.gif";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 
 export default function SignUpLoading (props) {
 

@@ -17,7 +17,7 @@ import Button from "./Button";
 import SwipeUp from "./SwipeUp";
 import background from "../../assets/background.gif";
 import loginMainImage from "../../assets/child.png";
-import translate from "app/Components/getLocalizedText";
+import translate from "./getLocalizedText";
 import ForgotPasswordPage from './ForgotPasswordPage';
 
 export default LogIn = props => {
@@ -37,6 +37,7 @@ export default LogIn = props => {
     let _start = () => {
         Animated.timing(fadeValue, {
             toValue: 1,
+            useNativeDriver: true,
             duration: 2000
         }).start();
     };
