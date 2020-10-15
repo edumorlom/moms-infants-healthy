@@ -18,16 +18,22 @@ export default SignUpInfo = (props) => {
   const [phone, setPhone] = useState('');
 
   useEffect(() => {
+    let isMounted = true;
     AsyncStorage.getItem('e-mail')
       .then((value) => {
-        value !== null && value !== '' ? setEmail(value) : null;
+        if(isMounted){
+          value !== null && value !== '' ? setEmail(value) : null;
+        }
       })
       .done();
     AsyncStorage.getItem('phone')
       .then((value) => {
-        value !== null && value !== '' ? setPhone(value) : null;
+        if(isMounted){
+          value !== null && value !== '' ? setPhone(value) : null;
+        }
       })
       .done();
+      return () => isMounted = false;
   }, []);
 
   let isValidEmail = (email) => {

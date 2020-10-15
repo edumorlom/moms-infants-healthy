@@ -19,16 +19,22 @@ export default function SignUpInfo(props) {
   const [dob, setDob] = useState('');
 
   useEffect(() => {
+    let isMounted = true;
     AsyncStorage.getItem('name')
       .then((value) => {
-        value !== null && value !== '' ? setName(value) : null;
+        if(isMounted){
+          value !== null && value !== '' ? setName(value) : null;
+        }
       })
       .done();
     AsyncStorage.getItem('dob')
       .then((value) => {
-        value !== null && value !== '' ? setDob(value) : null;
+        if(isMounted){
+          value !== null && value !== '' ? setDob(value) : null;
+        }
       })
       .done();
+      return () => isMounted = false;
   }, []);
 
   let onPress = () => {

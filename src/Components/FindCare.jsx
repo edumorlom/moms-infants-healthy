@@ -11,9 +11,13 @@ export default function FindCare(props) {
   const [service, setService] = useState(props.filters[1]);
 
   useEffect(() => {
+    let isMounted = true;
     // This runs on every re-render
-    setDist(props.filters[0]);
-    setService(props.filters[1]);
+    if(isMounted){
+      setDist(props.filters[0]);
+      setService(props.filters[1]);
+    }
+    return () => isMounted = false;
   });
 
   // props.filterToShow

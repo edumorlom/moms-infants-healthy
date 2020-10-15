@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   ScrollView,
   View,
@@ -12,18 +12,21 @@ import Plus from '../../assets/plus.png';
 import {deleteAppointment, fetchAppointment, getUid} from '../Firebase';
 
 export default function Appointment(props) {
-  let _isMounted = false;
   const [objects, setObjects] = useState([]);
   const uid = getUid();
-
+  const isMountedRef = useRef(null);
   getAppointment = () => {
-    fetchAppointment(uid, setObjects, _isMounted);
+    isMountedRef.current = true;
+    fetchAppointment(uid, setObjects, isMountedRef.current);
+    return () => isMountedRef.current = false;
   };
 
   useEffect(() => {
-    getAppointment();
-
-    return () => (_isMounted = false);
+    isMountedRef.current = true;
+    if(isMountedRef.current){
+      getAppointment();
+    }
+    return () => isMountedRef.current = false;
   }, []);
 
   removeAppointment = (id, eventId) => {

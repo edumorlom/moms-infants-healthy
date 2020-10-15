@@ -16,24 +16,28 @@ export default function LowerPanelHeader(props) {
 
   useEffect(() => {
     let content = props.lowerPanelContent;
+    let isMounted = true;
     // Check if the lowerPanelContent should have a fullscreen lower Panel
-    if (
-      ![
-        'findCare',
-        'shelters',
-        'clinicInfo',
-        'shelterInfo',
-        'selection',
-      ].includes(content)
-    ) {
-      props.setFullScreen(true);
-      props.setIsFullScreen(true);
-      setFullScreen(true);
+    if(isMounted){
+      if (
+        ![
+          'findCare',
+          'shelters',
+          'clinicInfo',
+          'shelterInfo',
+          'selection',
+        ].includes(content)
+      ) {
+        props.setFullScreen(true);
+        props.setIsFullScreen(true);
+        setFullScreen(true);
+      }
+      return () => {
+        props.setFullScreen(false);
+        props.setIsFullScreen(false);
+      };
     }
-    return () => {
-      props.setFullScreen(false);
-      props.setIsFullScreen(false);
-    };
+    return () => isMounted = false;
   }, []);
 
   let onPress = () => {

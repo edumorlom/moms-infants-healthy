@@ -18,16 +18,22 @@ export default SignUpPassword = (props) => {
   const [repeat, setRepeat] = useState('');
 
   useEffect(() => {
+    let  isMounted = true;
     AsyncStorage.getItem('pass')
       .then((value) => {
-        value !== null && value !== '' ? setPassword(value) : null;
+        if(isMounted){
+          value !== null && value !== '' ? setPassword(value) : null;
+        }
       })
       .done();
     AsyncStorage.getItem('repeat')
       .then((value) => {
+        if(isMounted){
         value !== null && value !== '' ? setRepeat(value) : null;
+        }
       })
       .done();
+      return () => isMounted = false;
   }, []);
 
   let onPress = () => {

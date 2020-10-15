@@ -28,7 +28,11 @@ export default LogIn = (props) => {
   // Remove async tasks on unMount using _isMounted
 
   useEffect(() => {
-    _start();
+    let isMounted = true;
+    if(isMounted){
+      _start();
+    }
+    return () => isMounted = false;
   }, []);
 
   let _start = () => {

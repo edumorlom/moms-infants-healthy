@@ -1,5 +1,5 @@
 import {View, Animated} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import appStyles, {win} from './AppStyles';
 import LowerPanelSelection from './LowerPanelSelection';
 import FindCare from './FindCare';
@@ -25,17 +25,25 @@ export default LowerPanel = (props) => {
   const [fullPanel, setFullPanel] = useState(true);
   const [fullScreen, setFullScreen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
-
   const [moveAnim] = useState(new Animated.Value(win.height * 0.3));
+  const isMountedRef = useRef(null);
 
   useEffect(() => {
     // When fullPanel changes move Panel
-    movePanel(fullPanel);
+    isMountedRef.current = true;
+    if(isMountedRef.current){
+      movePanel(fullPanel);
+    }
+    return () => isMountedRef.current = false;
   }, [fullPanel]);
 
   useEffect(() => {
     // When fullScreen changes make fullscreen
-    fullScreenPanel(fullScreen);
+    isMountedRef.current = true;
+    if(isMountedRef.current){
+      fullScreenPanel(fullScreen);
+    }
+    return () => isMountedRef.current = false;
   }, [fullScreen]);
 
   // This function makes an Anination for moving the lowerPanel up and down

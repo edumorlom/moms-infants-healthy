@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {View, AsyncStorage} from 'react-native';
 import SignUpInfo from './SignUpInfo';
 import LetsGetStarted from './LetsGetStarted';
@@ -23,19 +23,20 @@ export default function SignUp(props) {
   const [infant, setInfant] = useState(null);
   const [liveMiami, setLiveMiami] = useState(null);
   const [babyDOB, setBabyDOB] = useState('');
-
-  let _isMounted = false;
+  const isMountedRef = useRef(null);
 
   useEffect(() => {
-    if (index < 0) {
+    isMountedRef.current = true;
+    if (index < 0 && isMountedRef.current) {
       props.setScreen('login');
     }
+    return () => isMountedRef.current = false;
   });
 
   useEffect(() => {
-    _isMounted = true;
+    isMountedRef.current = true;
 
-    return () => (_isMounted = false);
+    return () => isMountedRef.current = false;
   }, []);
 
   let showMiamiOnlyAlert = true;

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {Image, TouchableOpacity, ScrollView, Linking, View} from 'react-native';
 import DialogInput from 'react-native-dialog-input';
 import * as ImagePicker from 'expo-image-picker';
@@ -18,16 +18,21 @@ export default function Documents() {
   const [value, onChangeText] = useState(null);
   const [buttonClickedStatus, setButtonClickedStatus] = useState(false);
   const [documents, setDocuments] = useState([]);
+  const isMountedRef = useRef(null);
 
   useEffect(() => {
+    isMountedRef.current = true;
     (async () => {
-      if (Constants.platform.ios | Constants.platform.android) {
-        const {status} = await ImagePicker.requestCameraRollPermissionsAsync();
-        if (status !== 'granted') {
-          alert('Permission Needed to Access Files!');
+      if(isMountedRef.current){
+        if (Constants.platform.ios | Constants.platform.android) {
+          const {status} = await ImagePicker.requestCameraRollPermissionsAsync();
+          if (status !== 'granted') {
+            alert('Permission Needed to Access Files!');
+          }
         }
       }
     })();
+    return () => isMountedRef.current = false;
   });
 
   let onPress = () => {
@@ -62,7 +67,11 @@ export default function Documents() {
   }
 
   useEffect(() => {
-    grabDocuments();
+    isMountedRef.current = true;
+    if(isMountedRef.current){
+      grabDocuments();
+    }
+    return () => isMountedRef.current = false;
   }, []);
 
   return (

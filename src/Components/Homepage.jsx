@@ -21,7 +21,11 @@ export default Homepage = (props) => {
   const [lowerPanelContent, setLowerPanelContent] = useState('selection');
 
   useEffect(() => {
-    fetchResources(); // Can only call one function inside useEffect when dealing with asyncs
+    let isMounted = true;
+    if(isMounted){
+      fetchResources(); // Can only call one function inside useEffect when dealing with asyncs
+    }
+    return () => isMounted = false;
   }, []);
 
   // This is a holder function for fetching the facilities (clinics and shelters) asynchronously

@@ -19,11 +19,15 @@ export default SignUpBabyDob = (props) => {
   const babyDOB = useRef(null);
 
   useEffect(() => {
+    let isMounted = true;
     AsyncStorage.getItem('babyDOB')
       .then((value) => {
-        value !== null && value !== '' ? setBabyDob(value) : null;
+        if(isMounted){
+          value !== null && value !== '' ? setBabyDob(value) : null;
+        }
       })
       .done();
+      return () => isMounted = false;
   }, []);
 
   let setDob = (babyDOB) => {

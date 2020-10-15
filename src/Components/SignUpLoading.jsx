@@ -17,13 +17,17 @@ export default function SignUpLoading(props) {
   const [color, setColor] = useState(appStyles.greyColor);
 
   useEffect(() => {
+    let isMounted = true;
     setTimeout(() => {
       setLoadingText(translate('allSet'));
       setColor(appStyles.pinkColor);
       setTimeout(() => {
-        props.signUpAndUploadData();
+        if(isMounted){
+          props.signUpAndUploadData();
+        }
       }, 1000);
     }, 2000);
+    return () => isMounted = false;
   }, []);
 
   return (

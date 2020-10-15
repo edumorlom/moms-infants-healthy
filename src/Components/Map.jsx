@@ -17,7 +17,11 @@ export default function Map(props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    onMount();
+    let isMounted = true;
+    if(isMounted){
+      onMount();
+    }
+    return () => isMounted = false;
   }, []);
 
   let onMount = async () => {

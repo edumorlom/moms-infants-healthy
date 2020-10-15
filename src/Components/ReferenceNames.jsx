@@ -6,7 +6,7 @@ import ReferenceInfo from './ReferenceInfo';
 import {deleteReference, fetchReference, getUid} from '../Firebase';
 
 function ReferenceNames(props) {
-  let _isMounted = false;
+  let _isMounted = true;
   const [references, setReferences] = useState([]);
   const uid = getUid();
 

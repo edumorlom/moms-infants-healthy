@@ -190,9 +190,11 @@ export default function FemaleCondom(props) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (index < 0) {
+    let isMounted = true;
+    if (index < 0 && isMounted) {
       props.setLowerPanelContent('FemaleCondomMain');
     }
+    return () => isMounted = false;
   });
 
   let getNextScreen = (value) => {
