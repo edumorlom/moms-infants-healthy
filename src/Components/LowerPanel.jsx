@@ -14,11 +14,14 @@ import Resources from './ResourcesPage';
 import STDInfo from './STDInfo';
 import Appointment from './Appointment';
 import NewAppointment from './NewAppointment';
+import Immunization from './Immunization';
+import NewImmunization from './NewImmunization';
 import STDSelection from './STDSelection';
 import Documents from './Documents';
 import FemaleCondom from './FemaleCondom';
 import ReferenceNames from './ReferenceNames';
 import AddReferenceNames from './AddReferenceNames';
+import Facilities from './Facilities';
 
 export default LowerPanel = (props) => {
   const [filterToShow, setFilterToShow] = useState(false);
@@ -31,19 +34,19 @@ export default LowerPanel = (props) => {
   useEffect(() => {
     // When fullPanel changes move Panel
     isMountedRef.current = true;
-    if(isMountedRef.current){
+    if (isMountedRef.current) {
       movePanel(fullPanel);
     }
-    return () => isMountedRef.current = false;
+    return () => (isMountedRef.current = false);
   }, [fullPanel]);
 
   useEffect(() => {
     // When fullScreen changes make fullscreen
     isMountedRef.current = true;
-    if(isMountedRef.current){
+    if (isMountedRef.current) {
       fullScreenPanel(fullScreen);
     }
-    return () => isMountedRef.current = false;
+    return () => (isMountedRef.current = false);
   }, [fullScreen]);
 
   // This function makes an Anination for moving the lowerPanel up and down
@@ -51,8 +54,8 @@ export default LowerPanel = (props) => {
     let destination = moveUp ? win.height * 0.3 : win.height * 0.5;
     Animated.timing(moveAnim, {
       toValue: destination,
-      duration: 150,
       useNativeDriver: false,
+      duration: 150,
     }).start();
   };
 
@@ -61,8 +64,8 @@ export default LowerPanel = (props) => {
     let destination = moveUp ? 0 : win.height * 0.3;
     Animated.timing(moveAnim, {
       toValue: destination,
-      duration: 0,
       useNativeDriver: false,
+      duration: 0,
     }).start();
   };
 
@@ -75,6 +78,9 @@ export default LowerPanel = (props) => {
   So to call a specific component you only need to know the name of the property (component)
   and call it like: lowerPanelContent[property]  */
   let lowerPanelContent = {
+    facilities: (
+      <Facilities setLowerPanelContent={props.setLowerPanelContent} />
+    ),
     findCare: (
       <FindCare
         clinics={props.clinics}
@@ -125,6 +131,12 @@ export default LowerPanel = (props) => {
     ),
     NewAppointment: (
       <NewAppointment setLowerPanelContent={props.setLowerPanelContent} />
+    ),
+    Immunization: (
+      <Immunization setLowerPanelContent={props.setLowerPanelContent} />
+    ),
+    NewImmunization: (
+      <NewImmunization setLowerPanelContent={props.setLowerPanelContent} />
     ),
     FemaleCondom: (
       <FemaleCondom setLowerPanelContent={props.setLowerPanelContent} />

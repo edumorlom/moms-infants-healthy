@@ -29,10 +29,10 @@ export default LogIn = (props) => {
 
   useEffect(() => {
     let isMounted = true;
-    if(isMounted){
+    if (isMounted) {
       _start();
     }
-    return () => isMounted = false;
+    return () => (isMounted = false);
   }, []);
 
   let _start = () => {
@@ -54,7 +54,7 @@ export default LogIn = (props) => {
           accessible={false}
         >
           <>
-          <ImageBackground
+            <ImageBackground
               source={background}
               style={{
                 position: 'absolute',
@@ -103,15 +103,16 @@ export default LogIn = (props) => {
           </>
         </TouchableHighlight>
         <View
-              style={{
-                paddingTop: appStyles.win.height * 0.05,
-                alignItems: 'center',
-              }}>
-              <SwipeUp
-                  text={translate('swipeUpToSignUp')}
-                  onSwipeUp={() => props.setScreen('signup')}
-              />
-         </View>
+          style={{
+            paddingTop: appStyles.win.height * 0.075,
+            alignItems: 'center',
+          }}
+        >
+          <SwipeUp
+            text={translate('swipeUpToSignUp')}
+            onSwipeUp={() => props.setScreen('signup')}
+          />
+        </View>
       </Animated.View>
     </>
   );

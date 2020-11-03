@@ -13,11 +13,11 @@ export default function FindCare(props) {
   useEffect(() => {
     let isMounted = true;
     // This runs on every re-render
-    if(isMounted){
+    if (isMounted) {
       setDist(props.filters[0]);
       setService(props.filters[1]);
     }
-    return () => isMounted = false;
+    return () => (isMounted = false);
   });
 
   // props.filterToShow
@@ -68,19 +68,14 @@ export default function FindCare(props) {
 
   let servicesArray = [
     'All',
-    'Education',
-    'Support & Counseling',
-    'Free Materials',
-    'Referrals',
-    'STD Tests',
-    'STD Treatment',
-    'Yearly Exam',
-    'Pregnancy Tests',
-    'Ultrasound',
-    'Immunization',
     'Abortions',
-    'Medical Care',
+    'Free Materials',
+    'Immunization',
     'Lab services',
+    'Medical Care',
+    'Pregnancy Tests',
+    'Referrals',
+    'Yearly Exam',
   ];
 
   let services = servicesArray.map((service) => ({

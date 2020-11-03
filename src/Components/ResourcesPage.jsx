@@ -4,6 +4,7 @@ import SelectionButton from './SelectionButton';
 import appointments from '../../assets/appointments.png';
 import document from '../../assets/document.png';
 import doctor from '../../assets/doctor.png';
+import babyVaccine from '../../assets/immunization.png';
 import ResourcesInfo from './ResourcesInformation';
 import translate from './getLocalizedText';
 import appStyles from './AppStyles';
@@ -23,6 +24,19 @@ export default function Resources(props) {
       onPress={() => Linking.openURL(resource.website)}
     />
   ));
+
+  let immunizationButton = (
+    <SelectionButton
+      style={appStyles.ImageOnRightSelectionButton}
+      text={translate('immunization')}
+      subtext={translate('immunizationInfo')}
+      icon={babyVaccine}
+      onPress={() => {
+        props.setLowerPanelContent('Immunization');
+      }}
+    />
+  );
+
   let appointmentButton = (
     <SelectionButton
       style={appStyles.ImageOnRightSelectionButton}
@@ -64,8 +78,9 @@ export default function Resources(props) {
       contentContainerStyle={{alignItems: 'center', maxWidth: '100%'}}
     >
       {resourceButtons}
-      {documentUploadButton}
       {appointmentButton}
+      {documentUploadButton}
+      {immunizationButton}
       {namesReferenceButton}
     </ScrollView>
   );

@@ -18,7 +18,7 @@ export default function LowerPanelHeader(props) {
     let content = props.lowerPanelContent;
     let isMounted = true;
     // Check if the lowerPanelContent should have a fullscreen lower Panel
-    if(isMounted){
+    if (isMounted) {
       if (
         ![
           'findCare',
@@ -37,7 +37,7 @@ export default function LowerPanelHeader(props) {
         props.setIsFullScreen(false);
       };
     }
-    return () => isMounted = false;
+    return () => (isMounted = false);
   }, []);
 
   let onPress = () => {
@@ -71,8 +71,12 @@ export default function LowerPanelHeader(props) {
         return translate(content);
       case 'Appointment':
         return translate('appointment');
+      case 'Immunization':
+        return translate('immunization');
       case 'NewAppointment':
         return translate('newAppointment');
+      case 'NewImmunization':
+        return translate('newImmunization');
       case 'documents':
         return translate(content);
       case 'FemaleCondom':

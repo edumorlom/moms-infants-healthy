@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
   TouchableHighlight,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from 'react-native';
 import appStyles from './AppStyles';
 import Button from './Button';
@@ -18,22 +18,22 @@ export default SignUpPassword = (props) => {
   const [repeat, setRepeat] = useState('');
 
   useEffect(() => {
-    let  isMounted = true;
+    let isMounted = true;
     AsyncStorage.getItem('pass')
       .then((value) => {
-        if(isMounted){
+        if (isMounted) {
           value !== null && value !== '' ? setPassword(value) : null;
         }
       })
       .done();
     AsyncStorage.getItem('repeat')
       .then((value) => {
-        if(isMounted){
-        value !== null && value !== '' ? setRepeat(value) : null;
+        if (isMounted) {
+          value !== null && value !== '' ? setRepeat(value) : null;
         }
       })
       .done();
-      return () => isMounted = false;
+    return () => (isMounted = false);
   }, []);
 
   let onPress = () => {
@@ -52,50 +52,52 @@ export default SignUpPassword = (props) => {
   };
   return (
     <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={appStyles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={appStyles.container}
     >
-    <TouchableHighlight
-      onPress={Keyboard.dismiss}
-      underlayColor="transparent"
-      accessible={false}
-    >
-      <>
-        <View style={appStyles.container}>
-          <Text style={appStyles.titleBlue}>{translate('createPassword')}</Text>
-          <View style={{paddingTop: appStyles.win.height * 0.1}}>
-            <TextBox
-              placeholder={translate('passwordInput')}
-              onChangeText={setPassword}
-              secureTextEntry
-              value={password}
-              style={appStyles.TextInputMask}
-            />
+      <TouchableHighlight
+        onPress={Keyboard.dismiss}
+        underlayColor="transparent"
+        accessible={false}
+      >
+        <>
+          <View style={appStyles.container}>
+            <Text style={appStyles.titleBlue}>
+              {translate('createPassword')}
+            </Text>
+            <View style={{paddingTop: appStyles.win.height * 0.1}}>
+              <TextBox
+                placeholder={translate('passwordInput')}
+                onChangeText={setPassword}
+                secureTextEntry
+                value={password}
+                style={appStyles.TextInputMask}
+              />
 
-            <TextBox
-              placeholder={translate('repeatPasswordInput')}
-              onChangeText={setRepeat}
-              secureTextEntry
-              value={repeat}
-              style={appStyles.TextInputMask}
-            />
-          </View>
-          <View
-            style={{
+              <TextBox
+                placeholder={translate('repeatPasswordInput')}
+                onChangeText={setRepeat}
+                secureTextEntry
+                value={repeat}
+                style={appStyles.TextInputMask}
+              />
+            </View>
+            <View
+              style={{
                 width: '100%',
                 alignItems: 'center',
-                paddingTop: '10%'
-            }}
+                paddingTop: '10%',
+              }}
             >
-            <Button
+              <Button
                 style={appStyles.button}
                 text={translate('continueButton')}
                 onPress={onPress}
-            />
+              />
             </View>
-        </View>
-      </>
-    </TouchableHighlight>
+          </View>
+        </>
+      </TouchableHighlight>
     </KeyboardAvoidingView>
   );
 };

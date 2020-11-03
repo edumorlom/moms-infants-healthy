@@ -6,7 +6,7 @@ import {
   View,
   AsyncStorage,
   TouchableHighlight,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from 'react-native';
 import {TextInputMask} from 'react-native-masked-text';
 import appStyles from './AppStyles';
@@ -22,12 +22,12 @@ export default SignUpBabyDob = (props) => {
     let isMounted = true;
     AsyncStorage.getItem('babyDOB')
       .then((value) => {
-        if(isMounted){
+        if (isMounted) {
           value !== null && value !== '' ? setBabyDob(value) : null;
         }
       })
       .done();
-      return () => isMounted = false;
+    return () => (isMounted = false);
   }, []);
 
   let setDob = (babyDOB) => {
@@ -53,56 +53,55 @@ export default SignUpBabyDob = (props) => {
 
   let titletext = translate('babydob');
 
-    return (
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={appStyles.container}
-      >
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={appStyles.container}
+    >
       <TouchableHighlight
-        underlayColor={"transparent"}
+        underlayColor="transparent"
         onPress={Keyboard.dismiss}
         accessible={false}
       >
-      <>
-        <View style={appStyles.container}>
-          <View>
-            <Text style={appStyles.titleBlue}>{titletext}</Text>
-          </View>
-          <View style={{ paddingTop: appStyles.win.height * 0.1 }}>
-            <TextInputMask
-              placeholder={translate('dob')}
-              type="datetime"
-              options={{
-                format: 'MM/DD/YYYY',
-                validator(value, settings) {
-                  let regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
-                  return regex.test(value);
-                }, // This validator function is read by isValid(), still to be used
+        <>
+          <View style={appStyles.container}>
+            <View>
+              <Text style={appStyles.titleBlue}>{titletext}</Text>
+            </View>
+            <View style={{paddingTop: appStyles.win.height * 0.1}}>
+              <TextInputMask
+                placeholder={translate('dob')}
+                type="datetime"
+                options={{
+                  format: 'MM/DD/YYYY',
+                  validator(value, settings) {
+                    let regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+                    return regex.test(value);
+                  }, // This validator function is read by isValid(), still to be used
+                }}
+                style={appStyles.TextInputMask}
+                value={babyDob}
+                onChangeText={setDob}
+                // ref={(ref) => (babyDOB = ref)}
+              />
+              {/* <TextInput placeholder={translate("dob")} type={'date'} onChangeText={setDob} keyboardType={"numeric"} dob = {"baby"}/> */}
+            </View>
+            <View
+              style={{
+                width: '100%',
+                alignItems: 'center',
+                paddingTop: '10%',
               }}
-              style={appStyles.TextInputMask}
-              value={babyDob}
-              onChangeText={setDob}
-              // ref={(ref) => (babyDOB = ref)}
-            />
-            {/* <TextInput placeholder={translate("dob")} type={'date'} onChangeText={setDob} keyboardType={"numeric"} dob = {"baby"}/> */}
+            >
+              <Button
+                style={appStyles.button}
+                text={translate('continueButton')}
+                onPress={onPress}
+              />
+            </View>
           </View>
-          <View
-            style={{
-              width: '100%',
-              alignItems: 'center',
-              paddingTop: '10%'
-            }}
-          >
-            <Button
-              style = {appStyles.button}
-              text={translate("continueButton")}
-              onPress={onPress}
-            />
-          </View>
-        </View>
-      </>
+        </>
       </TouchableHighlight>
-      </KeyboardAvoidingView>
-    );
-  
-}
+    </KeyboardAvoidingView>
+  );
+};

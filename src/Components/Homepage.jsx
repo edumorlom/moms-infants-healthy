@@ -22,10 +22,10 @@ export default Homepage = (props) => {
 
   useEffect(() => {
     let isMounted = true;
-    if(isMounted){
+    if (isMounted) {
       fetchResources(); // Can only call one function inside useEffect when dealing with asyncs
     }
-    return () => isMounted = false;
+    return () => (isMounted = false);
   }, []);
 
   // This is a holder function for fetching the facilities (clinics and shelters) asynchronously
@@ -92,10 +92,10 @@ export default Homepage = (props) => {
       case 'selection':
         break;
       case 'findCare':
-        setLowerPanelContent('selection');
+        setLowerPanelContent('facilities');
         break;
       case 'shelters':
-        setLowerPanelContent('selection');
+        setLowerPanelContent('facilities');
         break;
       case 'clinicInfo':
         setLowerPanelContent('findCare');
@@ -121,6 +121,12 @@ export default Homepage = (props) => {
       case 'NewAppointment':
         setLowerPanelContent('Appointment');
         break;
+      case 'Immunization':
+        setLowerPanelContent('resources');
+        break;
+      case 'NewImmunization':
+        setLowerPanelContent('Immunization');
+        break;
       case 'documents':
         setLowerPanelContent('resources');
         break;
@@ -132,6 +138,9 @@ export default Homepage = (props) => {
         break;
       case 'AddReferenceNames':
         setLowerPanelContent('ReferenceNames');
+        break;
+      case 'facilities':
+        setLowerPanelContent('selection');
         break;
       default:
         throw new Error('That is not one of the state elements in Homepage');

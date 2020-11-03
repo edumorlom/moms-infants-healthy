@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableHighlight, Text, View, ScrollView} from 'react-native';
 import appStyles from './AppStyles';
 import SelectionButton from './SelectionButton';
-import butterfly from '../../assets/butterfly.png';
+import STDAwareness from '../../assets/std-awareness.png';
 import translate from './getLocalizedText';
 import FemaleCondom from '../../assets/FC.png';
 
@@ -15,7 +15,7 @@ export default function learn(props) {
         style={appStyles.ImageOnRightSelectionButton}
         text={translate('STDAwareness')}
         subtext={translate('learnSTDs')}
-        icon={butterfly}
+        icon={STDAwareness}
         onPress={() => {
           props.setLowerPanelContent('STDSelection');
         }}
