@@ -85,6 +85,8 @@ export default function LowerPanelHeader(props) {
         return translate('NameReference');
       case 'AddReferenceNames':
         return translate('AddNameReference');
+      case 'facilities':
+        return translate(content);
       default:
         throw new Error('That is not one of the state elements in SignUp');
     }
