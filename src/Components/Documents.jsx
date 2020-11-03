@@ -23,16 +23,18 @@ export default function Documents() {
   useEffect(() => {
     isMountedRef.current = true;
     (async () => {
-      if(isMountedRef.current){
+      if (isMountedRef.current) {
         if (Constants.platform.ios | Constants.platform.android) {
-          const {status} = await ImagePicker.requestCameraRollPermissionsAsync();
+          const {
+            status,
+          } = await ImagePicker.requestCameraRollPermissionsAsync();
           if (status !== 'granted') {
             alert('Permission Needed to Access Files!');
           }
         }
       }
     })();
-    return () => isMountedRef.current = false;
+    return () => (isMountedRef.current = false);
   });
 
   let onPress = () => {
@@ -68,10 +70,10 @@ export default function Documents() {
 
   useEffect(() => {
     isMountedRef.current = true;
-    if(isMountedRef.current){
+    if (isMountedRef.current) {
       grabDocuments();
     }
-    return () => isMountedRef.current = false;
+    return () => (isMountedRef.current = false);
   }, []);
 
   return (

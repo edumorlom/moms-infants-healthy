@@ -18,15 +18,15 @@ export default function Appointment(props) {
   getAppointment = () => {
     isMountedRef.current = true;
     fetchAppointment(uid, setObjects, isMountedRef.current);
-    return () => isMountedRef.current = false;
+    return () => (isMountedRef.current = false);
   };
 
   useEffect(() => {
     isMountedRef.current = true;
-    if(isMountedRef.current){
+    if (isMountedRef.current) {
       getAppointment();
     }
-    return () => isMountedRef.current = false;
+    return () => (isMountedRef.current = false);
   }, []);
 
   removeAppointment = (id, eventId) => {

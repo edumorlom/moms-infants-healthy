@@ -22,12 +22,12 @@ export default function SignUpLoading(props) {
       setLoadingText(translate('allSet'));
       setColor(appStyles.pinkColor);
       setTimeout(() => {
-        if(isMounted){
+        if (isMounted) {
           props.signUpAndUploadData();
         }
       }, 1000);
     }, 2000);
-    return () => isMounted = false;
+    return () => (isMounted = false);
   }, []);
 
   return (

@@ -30,13 +30,13 @@ export default function SignUp(props) {
     if (index < 0 && isMountedRef.current) {
       props.setScreen('login');
     }
-    return () => isMountedRef.current = false;
+    return () => (isMountedRef.current = false);
   });
 
   useEffect(() => {
     isMountedRef.current = true;
 
-    return () => isMountedRef.current = false;
+    return () => (isMountedRef.current = false);
   }, []);
 
   let showMiamiOnlyAlert = true;
