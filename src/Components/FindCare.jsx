@@ -30,7 +30,7 @@ export default function FindCare(props) {
       key={key}
       text={getResourceName(clinic.resource)}
       subtext={`${clinic.address.street}\n${clinic.address.city}\n${clinic.address.state}, ${clinic.address.zipCode}\n${clinic.distance} miles`}
-      icon={clinicLogo}
+      icon={clinic.logoImage}
       onPress={() => {
         props.setClinicToView(clinic);
         props.setLowerPanelContent('clinicInfo');

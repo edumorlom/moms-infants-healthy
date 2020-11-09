@@ -26,7 +26,7 @@ export default function SelectionButton(props) {
   };
 
   let showImageInView = () => {
-    return <Image style={props.style.ImageInView} source={props.icon} />;
+    return <Image style={props.style.ImageInView} source={{uri: props.icon}} />;
   };
 
   return (

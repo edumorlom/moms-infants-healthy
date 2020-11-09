@@ -334,8 +334,8 @@ export default {
       justifyContent: 'center',
     },
     ImageInView: {
-      width: 40,
-      height: 40,
+      width: 90,
+      height: 90,
     },
 
     Text: {

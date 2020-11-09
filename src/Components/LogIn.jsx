@@ -145,6 +145,7 @@ export default LogIn = (props) => {
           accessible={false}
         >
           <>
+            {/* }
             <ImageBackground
               source={background}
               style={{
@@ -154,6 +155,7 @@ export default LogIn = (props) => {
                 height: appStyles.win.height,
               }}
             />
+            */}
             <View
               style={{
                 paddingTop: appStyles.win.height * 0.05,
@@ -190,7 +192,7 @@ export default LogIn = (props) => {
               <Button
                 style={forgotPassword}
                 text={translate('forgotPassword')}
-                onPress={() => props.navigation.navigate('ForgotPasswordPage')}
+                onPress={() => props.navigation.navigate('TestingScreen')}
               />
             </View>
           </>

@@ -23,6 +23,7 @@ import appStyles from './src/Components/AppStyles';
 import backArrow from './assets/go-back-arrow.png';
 
 import LogIn from './src/Components/LogIn';
+import TestingScreen from './src/Components/TestingScreen';
 import LetsGetStarted from './src/Components/LetsGetStarted';
 import SignUpInfo from './src/Components/SignUpInfo';
 import SignUpYesorNo from './src/Components/SignUpYesorNo';
@@ -75,6 +76,11 @@ function App() {
         <Stack.Screen
           name="LogIn"
           component={LogIn}
+          options={{header: () => null}}
+        />
+        <Stack.Screen
+          name="TestingScreen"
+          component={TestingScreen}
           options={{header: () => null}}
         />
         <Stack.Screen
