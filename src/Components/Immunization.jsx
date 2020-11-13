@@ -25,6 +25,7 @@ export default function Immunization(props) {
   const [objects, setObjects] = useState([]);
   const uid = getUid();
   const email = getUEmail();
+
   getImmunization = () => {
     fetchImmunization(uid, setObjects, _isMounted);
   };
@@ -61,8 +62,10 @@ export default function Immunization(props) {
       console.log('sendEmailViaEmailApp -----> mail link is undefined');
     }
   };
-
-  let emailBody = JSON.stringify(objects, null, '  ');
+  let emailBody = JSON.stringify(objects, null, ' ').replace(
+    /[\{\[\]\"\}\,]+/g,
+    ''
+  );
 
   return (
     <ScrollView
