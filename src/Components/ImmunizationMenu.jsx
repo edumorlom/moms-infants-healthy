@@ -1,10 +1,4 @@
-import {
-  Text,
-  TouchableHighlight,
-  View,
-  Alert,
-  DatePickerAndroid,
-} from 'react-native';
+import {Text, TouchableHighlight, View, Alert} from 'react-native';
 import React from 'react';
 import {Feather} from '@expo/vector-icons';
 import appStyles, {borderRadius, shadow} from './AppStyles';
