@@ -39,16 +39,16 @@ export const signUp = (
       ).then(
         () => {
           sendWelcomeSMS(fullName, phoneNumber).then((response) =>
-            console.log('Text Message Sent Successfully!')
+            console.log(translate("msgSent"))
           );
         },
         (e) => {
-          alert("ERROR: Couldn't save user information!");
+          alert(translate("infoNotSaved"));
         }
       );
     },
     (e) => {
-      alert('ERROR: Email is already associated with another account!');
+      alert(translate("emailInUse"));
     }
   );
 };
@@ -58,7 +58,7 @@ export const createUserWithEmailAndPassword = (email, password) => {
 };
 
 export const checkEmailExist = async (email) => {
-  console.log(`This is the email passed to firebase method  ${email}`);
+  console.log(translate("emailPassed") + email);
   return await firebase.auth().fetchSignInMethodsForEmail(email);
 };
 
@@ -298,7 +298,7 @@ export const fetchAppointment = async (uid, setObjects, _isMounted) => {
         });
       });
   } else {
-    alert("Error: Couldn't get the Appointment Info");
+    alert(translate("aptInfoUnrecieved"));
   }
 };
 
@@ -332,7 +332,7 @@ export const fetchImmunization = async (uid, setObjects, _isMounted) => {
       })
       .catch((err) => console.log(err.message));
   } else {
-    alert("Error: Couldn't get Immunization Info");
+    alert(translate("immInfoUnrecieved"));
   }
 };
 
@@ -387,7 +387,7 @@ export const fetchReference = async (uid, setReferences, _isMounted) => {
       })
       .catch((err) => console.log(err.message));
   } else {
-    alert("Error: Couldn't get Reference Info");
+    alert(translate("refInfoUnrecieved"));
   }
 };
 
@@ -397,5 +397,5 @@ export const deleteReference = async (id, uid, references, setReferences) => {
     const reference = firebase.database().ref(`users/${uid}/references/${id}`);
     return reference.remove().catch((err) => console.log(err.message));
   }
-  console.log("Error: Couldn't get the Reference Info");
+  console.log(translate("specRefInfoUnrecieved"));
 };

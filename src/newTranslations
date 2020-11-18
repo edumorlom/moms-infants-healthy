@@ -1,0 +1,8 @@
+"msgSent": "Text Message Sent Successfully!",
+"infoNotSaved": "ERROR: Couldn't save user information!",
+"emailInUse": "ERROR: Email is already associated with another account!",
+"emailPassed": "This is the email passed to firebase method",
+"aptInfoUnrecieved": "Error: Couldn't get the Appointment Info",
+"immInfoUnrecieved": "Error: Couldn't get Immunization Info",
+"refInfoUnrecieved": "Error: Couldn't get Reference Info",
+"specRefInfoUnrecieved": "Error: Couldn't get the Reference Info"
