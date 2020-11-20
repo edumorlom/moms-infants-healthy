@@ -1,6 +1,6 @@
 # Keeping Moms and Infants Healthy (nuMom) -- Mobile Application <version 3.0>
 
-Authors: Moises Bentolila, Eduardo Morales, Gabriel Alfonso, Michael Llane, Noe Velasquez, Amin Sheikhnias
+Authors: Eduardo Morales, Gabriel Alfonso, Michael Llanes, Noe Velasquez, Amin Sheikhnias, Jessica Gonzalez, Yonal Hernandez, David Antunez
 
 Product Owner: Jean Hannan
 
@@ -80,7 +80,11 @@ Inside the root of the ```React-Native-App/src/functions``` directory is another
 
 npm install -g npm
 
-npm install expo-cli --global
+npm install -g expo-cli
+
+npm install expo
+
+expo install
 
 ```
 
@@ -98,7 +102,7 @@ git clone <the link to the project>
 
 Install the expo client on your mobile device or install the Android/Iphone simulator on your computer
 
-ios: https://apps.apple.com/app/apple-store/id982107779
+iOS: https://apps.apple.com/app/apple-store/id982107779
 
 Android: https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www
 
@@ -121,6 +125,3 @@ in order to start the application. If using default settings, the expo cli will 
 Press a for Android emulator, or i for iOS simulator.
 
 ```
-
-
-

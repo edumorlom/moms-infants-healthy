@@ -1,103 +1,97 @@
 [
-    {
-        "resource": "Lotus House Women's Shelter",
-        "address": {
-        "street": "217 NW 15th St.",
-        "apt": "",
-        "city": "Miami",
-        "state": "FL",
-        "zipCode": "33136"
-        },
-        
-        "coordinate": {
-        "latitude": 25.789780,
-        "longitude": -80.199210
-        },
-        "phoneNumber": "305-438-0556",
-        "website": "https://lotushouse.org/",
-        "opened": "Hours or services may differ",
-        "other":
-        "Lotus House is an organization dedicated to improving the lives of homeless women, youth and children. We provide sanctuary, support, education, tools and resources that empower them to heal, learn, grow and blossom into who they are truly meant to be."
+  {
+    "resource": "Lotus House Women's Shelter",
+    "address": {
+      "street": "217 NW 15th St.",
+      "apt": "",
+      "city": "Miami",
+      "state": "FL",
+      "zipCode": "33136"
     },
-    {
-        "resource": "Miami Rescue Mission Center for Women and Children",
-        "address": {
-            "street": "2250 NW 1st Ave ",
-            "apt": "",
-            "city": "Miami",
-            "state": "FL",
-            "zipCode": "33127 "
-        },
-        
-        "coordinate": {
-            "latitude": 25.798780,
-            "longitude": -80.197110
-        },
-        "phoneNumber": "305-571-2250 ",
-        "website": "http://www.miamirescuemission.com/women.htm ",
-        "opened": " ",
-        "other":
-        "The Center is a haven for homeless women and children, and provides emergency overnight shelter as well as a long-term recovery program. The 40-bed facility located at 2250 NW 1st Avenue in Miami."
-        
+
+    "coordinate": {
+      "latitude": 25.78978,
+      "longitude": -80.19921
     },
-    {
-        "resource": "Women In Distress",
-        "address": {
-        "street": "1372 FL-7",
-        "apt": "",
-        "city": "Margate",
-        "state": "FL",
-        "zipCode": "33063"
-        },
-        
-        "coordinate": {
-        "latitude": 26.245360,
-        "longitude": -80.201270
-        },
-        "phoneNumber": "954-760-9800",
-        "website": "http://www.womenindistress.org",
-        "opened": "Open 24 hours",
-        "other":
-        "Women In Distress is the only nationally accredited, state-certified, full service domestic violence center serving Broward County, Florida. Our mission is to stop domestic violence abuse for everyone through intervention, education and advocacy."
+    "phoneNumber": "305-438-0556",
+    "website": "https://lotushouse.org/",
+    "opened": "Hours or services may differ",
+    "other": "Lotus House is an organization dedicated to improving the lives of homeless women, youth and children. We provide sanctuary, support, education, tools and resources that empower them to heal, learn, grow and blossom into who they are truly meant to be."
+  },
+  {
+    "resource": "Miami Rescue Mission Center for Women and Children",
+    "address": {
+      "street": "2250 NW 1st Ave ",
+      "apt": "",
+      "city": "Miami",
+      "state": "FL",
+      "zipCode": "33127 "
     },
-    {
-        "resource": "Women of Power Restoration Program",
-        "address": {
-        "street": "2100 SW 218th St",
-        "apt": "",
-        "city": "Goulds",
-        "state": "FL",
-        "zipCode": "33170"
-        },
-        
-        "coordinate": {
-        "latitude": 25.564120,
-        "longitude": -80.387940
-        },
-        "phoneNumber": "305-305-1507",
-        "website": "https://womenofpower.wixsite.com/wopr",
-        "opened": "Opens 10AM–5PM",
-        "other":
-        " Women of Power is a non-profit organization providing support and comprehensive restoration services to multi-cultural youth, women and their children who find themselves homeless as a result of having experience domestic violence and abuse. As a faith based organization we provide emotional and spiritual care with excellence."
+
+    "coordinate": {
+      "latitude": 25.79878,
+      "longitude": -80.19711
     },
-    {
-        "resource": "The Missionaries of Charity of Mother Teresa",
-        "address": {
-        "street": "724 NW 17th St",
-        "apt": "",
-        "city": "Miami",
-        "state": "FL",
-        "zipCode": "33136"
-        },
-        
-        "coordinate": {
-        "latitude": 25.791480,
-        "longitude": -80.207500
-        },
-        "phoneNumber": "305-545-5699",
-        "website": "https://www.miamiarch.org/CatholicDiocese.php?op=Missionaries_of_Charity",
-        "opened": "Opens 8:30AM–11AM",
-        "other":
-        "The Missionaries of Charity of Mother Teresa arrived in the archdiocese in 1980 to care for the \"poorest of the poor\" in Miami's inner city. They currently operate a shelter for homeless women and children near Jackson Memorial Hospital."
-    }
+    "phoneNumber": "305-571-2250 ",
+    "website": "http://www.miamirescuemission.com/women.htm ",
+    "opened": " ",
+    "other": "The Center is a haven for homeless women and children, and provides emergency overnight shelter as well as a long-term recovery program. The 40-bed facility located at 2250 NW 1st Avenue in Miami."
+  },
+  {
+    "resource": "Women In Distress",
+    "address": {
+      "street": "1372 FL-7",
+      "apt": "",
+      "city": "Margate",
+      "state": "FL",
+      "zipCode": "33063"
+    },
+
+    "coordinate": {
+      "latitude": 26.24536,
+      "longitude": -80.20127
+    },
+    "phoneNumber": "954-760-9800",
+    "website": "http://www.womenindistress.org",
+    "opened": "Open 24 hours",
+    "other": "Women In Distress is the only nationally accredited, state-certified, full service domestic violence center serving Broward County, Florida. Our mission is to stop domestic violence abuse for everyone through intervention, education and advocacy."
+  },
+  {
+    "resource": "Women of Power Restoration Program",
+    "address": {
+      "street": "2100 SW 218th St",
+      "apt": "",
+      "city": "Goulds",
+      "state": "FL",
+      "zipCode": "33170"
+    },
+
+    "coordinate": {
+      "latitude": 25.56412,
+      "longitude": -80.38794
+    },
+    "phoneNumber": "305-305-1507",
+    "website": "https://womenofpower.wixsite.com/wopr",
+    "opened": "Opens 10AM–5PM",
+    "other": " Women of Power is a non-profit organization providing support and comprehensive restoration services to multi-cultural youth, women and their children who find themselves homeless as a result of having experience domestic violence and abuse. As a faith based organization we provide emotional and spiritual care with excellence."
+  },
+  {
+    "resource": "The Missionaries of Charity of Mother Teresa",
+    "address": {
+      "street": "724 NW 17th St",
+      "apt": "",
+      "city": "Miami",
+      "state": "FL",
+      "zipCode": "33136"
+    },
+
+    "coordinate": {
+      "latitude": 25.79148,
+      "longitude": -80.2075
+    },
+    "phoneNumber": "305-545-5699",
+    "website": "https://www.miamiarch.org/CatholicDiocese.php?op=Missionaries_of_Charity",
+    "opened": "Opens 8:30AM–11AM",
+    "other": "The Missionaries of Charity of Mother Teresa arrived in the archdiocese in 1980 to care for the \"poorest of the poor\" in Miami's inner city. They currently operate a shelter for homeless women and children near Jackson Memorial Hospital."
+  }
 ]

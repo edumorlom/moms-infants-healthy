@@ -1,35 +1,35 @@
-import React from "react";
-import { TouchableHighlight, Text, View, ScrollView } from "react-native";
-import appStyles from "./AppStyles";
-import Menu from "./Menu";
-import STD from "./STD";
-import {STDTranslate} from "app/Components/getLocalizedText";
+import React from 'react';
+import {TouchableHighlight, Text, View, ScrollView} from 'react-native';
+import appStyles from './AppStyles';
+import Menu from './Menu';
+import STD from './STD';
+import translate from './getLocalizedText';
 
 export default function STDInfo(props) {
   console.log(props.STDToView);
   return (
     <ScrollView
-      contentContainerStyle={{ alignItems: "center", maxWidth: "100%" }}
+      contentContainerStyle={{alignItems: 'center', maxWidth: '100%'}}
     >
       <Menu
-        title={STDTranslate("symptoms")}
-        info={STDTranslate(props.STDToView.symptoms)}
+        title={translate('symptoms')}
+        info={translate(props.STDToView.symptoms)}
       />
       <Menu
-        title={STDTranslate("testing")}
-        info={STDTranslate(props.STDToView.diagnosis)}
+        title={translate('testing')}
+        info={translate(props.STDToView.diagnosis)}
       />
       <Menu
-        title={STDTranslate("treatment")}
-        info={STDTranslate(props.STDToView.treatment)}
+        title={translate('treatment')}
+        info={translate(props.STDToView.treatment)}
       />
       <Menu
-        title={STDTranslate("consequences")}
-        info={STDTranslate(props.STDToView.consequences)}
+        title={translate('consequences')}
+        info={translate(props.STDToView.consequences)}
       />
       <Menu
-        title={STDTranslate("safeSex")}
-        info={STDTranslate(props.STDToView.safeSex)}
+        title={translate('safeSex')}
+        info={translate(props.STDToView.safeSex)}
       />
     </ScrollView>
   );

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from 'react';
 import {
   ScrollView,
   View,
   StyleSheet,
   Image,
   TouchableOpacity,
-} from "react-native";
-import AppointmentMenu from "./AppointmentMenu";
-import appStyles from "./AppStyles";
-import Plus from "../../assets/plus.png";
-import { deleteAppointment, fetchAppointment, getUid } from "../Firebase";
+} from 'react-native';
+import AppointmentMenu from './AppointmentMenu';
+import appStyles from './AppStyles';
+import Plus from '../../assets/plus.png';
+import {deleteAppointment, fetchAppointment, getUid} from '../Firebase';
 
 export default function Appointment(props) {
   let _isMounted = false;
@@ -32,16 +32,16 @@ export default function Appointment(props) {
 
   return (
     <ScrollView
-      contentContainerStyle={{ alignItems: "flex-end", maxWidth: "100%" }}
+      contentContainerStyle={{alignItems: 'flex-end', maxWidth: '100%'}}
       showsVerticalScrollIndicator={false}
     >
       <TouchableOpacity
         style={appStyles.viewPlus}
         onPress={() => {
-          props.setLowerPanelContent("NewAppointment");
+          props.setLowerPanelContent('NewAppointment');
         }}
       >
-        <Image source={Plus} style={{ height: 25, width: 25 }} />
+        <Image source={Plus} style={{height: 25, width: 25}} />
       </TouchableOpacity>
       <View>
         {objects.map((appointments, index) => {

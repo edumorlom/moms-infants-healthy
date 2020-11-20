@@ -32,8 +32,10 @@
     "android": {
       "package": "edu.fiu.momsInfantsHealthy",
       "config": {
-        "googleMaps": { "apiKey": "AIzaSyDZIfZXvGNacdzn-cBHdrzYakwHmh4DXok" }   
-     }
+        "googleMaps": {
+          "apiKey": "AIzaSyDZIfZXvGNacdzn-cBHdrzYakwHmh4DXok"
+        }
+      }
     },
     "description": "",
     "githubUrl": "https://github.com/edumorlom/moms-infants-healthy"

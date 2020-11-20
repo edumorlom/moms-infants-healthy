@@ -1,8 +1,8 @@
-import { Image, Linking, Text, TouchableHighlight, View } from "react-native";
-import appStyles, { borderRadius, greyColor, shadow } from "./AppStyles";
-import React from "react";
-import * as Haptics from "expo-haptics";
-import document from "../../assets/document.png";
+import {Image, Linking, Text, TouchableHighlight, View} from 'react-native';
+import React from 'react';
+import * as Haptics from 'expo-haptics';
+import appStyles, {borderRadius, greyColor, shadow} from './AppStyles';
+import document from '../../assets/document.png';
 
 export default function DocumentSelectionButton(props) {
   let onPress = () => {
@@ -17,24 +17,24 @@ export default function DocumentSelectionButton(props) {
       style={{
         margin: 5,
         padding: 20,
-        backgroundColor: "white",
+        backgroundColor: 'white',
         ...shadow,
         minHeight: appStyles.win.height * 0.2,
         maxHeight: appStyles.win.height * 0.3,
         width: appStyles.win.width * 0.95,
         borderColor: greyColor,
-        borderRadius: borderRadius,
-        alignItems: "center",
-        flexDirection: "row",
+        borderRadius,
+        alignItems: 'center',
+        flexDirection: 'row',
       }}
     >
-      <React.Fragment>
-        <View style={{ height: "100%", width: "70%", marginRight: 20 }}>
+      <>
+        <View style={{height: '100%', width: '70%', marginRight: 20}}>
           <Text
             style={{
               color: appStyles.blueColor,
               fontSize: appStyles.regularFontSize,
-              fontWeight: "bold",
+              fontWeight: 'bold',
             }}
           >
             {props.title}
@@ -48,13 +48,10 @@ export default function DocumentSelectionButton(props) {
             {props.subtitle}
           </Text>
         </View>
-        <View style={{ height: "100%", width: "7%", justifyContent: "center" }}>
-          <Image
-            style={{ width: 65, height: 65 }}
-            source={document}
-          />
+        <View style={{height: '100%', width: '7%', justifyContent: 'center'}}>
+          <Image style={{width: 65, height: 65}} source={document} />
         </View>
-      </React.Fragment>
+      </>
     </TouchableHighlight>
   );
 }
