@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {View, AsyncStorage} from 'react-native';
 import {getPreciseDistance} from 'geolib';
+import * as Notifications from 'expo-notifications';
 import Map from './Map';
 import LowerPanel from './LowerPanel';
 // import SOSButton from "./SOSButton";
@@ -8,6 +9,15 @@ import appStyles from './AppStyles';
 import CancelFilterButton from './Button';
 import {getRef} from '../Firebase';
 import filterImage from '../../assets/delete-filter.png';
+
+// Notifications Initialize
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 export default Homepage = (props) => {
   const [fullPanel, setFullPanel] = useState(true);
@@ -19,9 +29,28 @@ export default Homepage = (props) => {
   const [shelterToView, setShelterToView] = useState(null);
   const [STDToView, setSTDToView] = useState(null);
   const [lowerPanelContent, setLowerPanelContent] = useState('selection');
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
 
   useEffect(() => {
     fetchResources(); // Can only call one function inside useEffect when dealing with asyncs
+    // add notificationReceivedListener
+    notificationListener.current = Notifications.addNotificationReceivedListener(
+      (notification) => {
+        setNotification(notification);
+      }
+    );
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        console.log(response);
+      }
+    );
+    // cancel notificationReceivedListener
+    return () => {
+      Notifications.removeNotificationSubscription(notificationListener);
+      Notifications.removeNotificationSubscription(responseListener);
+    };
   }, []);
 
   // This is a holder function for fetching the facilities (clinics and shelters) asynchronously
@@ -116,12 +145,6 @@ export default Homepage = (props) => {
         break;
       case 'NewAppointment':
         setLowerPanelContent('Appointment');
-        break;
-      case 'Immunization':
-        setLowerPanelContent('resources');
-        break;
-      case 'NewImmunization':
-        setLowerPanelContent('Immunization');
         break;
       case 'documents':
         setLowerPanelContent('resources');

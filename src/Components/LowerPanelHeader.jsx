@@ -68,12 +68,8 @@ export default function LowerPanelHeader(props) {
         return translate(content);
       case 'Appointment':
         return translate('appointment');
-      case 'Immunization':
-        return translate('immunization');
       case 'NewAppointment':
         return translate('newAppointment');
-      case 'NewImmunization':
-        return translate('newImmunization');
       case 'documents':
         return translate(content);
       case 'FemaleCondom':

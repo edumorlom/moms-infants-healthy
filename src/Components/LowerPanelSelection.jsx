@@ -1,11 +1,19 @@
 import React from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {
+  TouchableHighlight,
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import {MaterialIcons} from '@expo/vector-icons';
-import {useNavigation} from '@react-navigation/native';
 import babyBottle from '../../assets/baby-bottle.png';
-import clinicLogo from '../../assets/facilities.png';
+import clinicLogo from '../../assets/clinic-logo.png';
+import shelterLogo from '../../assets/shelter-logo.png';
 import lightBulb from '../../assets/light-bulb.png';
+import document from '../../assets/document.png';
 import WelcomeUserBanner from './WelcomeUserBanner';
 import SelectionButton from './SelectionButton';
 import translate from './getLocalizedText';
@@ -13,8 +21,6 @@ import appStyles from './AppStyles';
 import Button from './Button';
 
 export default function LowerPanelSelection(props) {
-  const navigation = useNavigation();
-
   return (
     <>
       <GestureRecognizer
@@ -45,7 +51,7 @@ export default function LowerPanelSelection(props) {
             size={45}
             color="gray"
             style={styles.userSettingStyle}
-            onPress={() => navigation.navigate('SettingsScreen')}
+            onPress={() => props.setScreen('setting')}
           />
         </View>
       </GestureRecognizer>
@@ -68,7 +74,7 @@ export default function LowerPanelSelection(props) {
           text={translate('learn')}
           icon={babyBottle}
           onPress={() => {
-            navigation.navigate('Learn');
+            props.setLowerPanelContent('learn');
           }}
         />
         <SelectionButton
@@ -76,7 +82,7 @@ export default function LowerPanelSelection(props) {
           text={translate('resources')}
           icon={lightBulb}
           onPress={() => {
-            navigation.navigate('ResourcesPage');
+            props.setLowerPanelContent('resources');
           }}
         />
       </ScrollView>

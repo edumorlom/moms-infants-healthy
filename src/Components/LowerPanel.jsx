@@ -9,6 +9,16 @@ import ClinicInfo from './ClinicInfo';
 import ShelterInfo from './ShelterInfo';
 
 import LowerPanelHeader from './LowerPanelHeader';
+import Learn from './Learn';
+import Resources from './ResourcesPage';
+import STDInfo from './STDInfo';
+import Appointment from './Appointment';
+import NewAppointment from './NewAppointment';
+import STDSelection from './STDSelection';
+import Documents from './Documents';
+import FemaleCondom from './FemaleCondom';
+import ReferenceNames from './ReferenceNames';
+import AddReferenceNames from './AddReferenceNames';
 import Facilities from './Facilities';
 
 export default LowerPanel = (props) => {
@@ -34,7 +44,6 @@ export default LowerPanel = (props) => {
     let destination = moveUp ? win.height * 0.3 : win.height * 0.5;
     Animated.timing(moveAnim, {
       toValue: destination,
-      useNativeDriver: false,
       duration: 150,
     }).start();
   };
@@ -44,7 +53,6 @@ export default LowerPanel = (props) => {
     let destination = moveUp ? 0 : win.height * 0.3;
     Animated.timing(moveAnim, {
       toValue: destination,
-      useNativeDriver: false,
       duration: 0,
     }).start();
   };
@@ -91,6 +99,36 @@ export default LowerPanel = (props) => {
         shelter={props.shelterToView}
         setLowerPanelContent={props.setLowerPanelContent}
       />
+    ),
+    learn: <Learn setLowerPanelContent={props.setLowerPanelContent} />,
+    STDSelection: (
+      <STDSelection
+        setLowerPanelContent={props.setLowerPanelContent}
+        setSTDToView={props.setSTDToView}
+      />
+    ),
+    resources: <Resources setLowerPanelContent={props.setLowerPanelContent} />,
+    STDInfo: (
+      <STDInfo
+        setLowerPanelContent={props.setLowerPanelContent}
+        STDToView={props.STDToView}
+      />
+    ),
+    Appointment: (
+      <Appointment setLowerPanelContent={props.setLowerPanelContent} />
+    ),
+    NewAppointment: (
+      <NewAppointment setLowerPanelContent={props.setLowerPanelContent} />
+    ),
+    FemaleCondom: (
+      <FemaleCondom setLowerPanelContent={props.setLowerPanelContent} />
+    ),
+    documents: <Documents setLowerPanelContent={props.setLowerPanelContent} />,
+    ReferenceNames: (
+      <ReferenceNames setLowerPanelContent={props.setLowerPanelContent} />
+    ),
+    AddReferenceNames: (
+      <AddReferenceNames setLowerPanelContent={props.setLowerPanelContent} />
     ),
     selection: (
       <LowerPanelSelection

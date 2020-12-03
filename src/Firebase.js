@@ -175,6 +175,44 @@ export const registerForPushNotificationsAsync = async (currentUser) => {
   // call the push notification
 };
 
+// get all users token to sendPushNotification
+export const sendPushNotification = async (title, body, data) => {
+  const usersRef = await firebase.database().ref('users');
+
+  usersRef.on('value', (users) => {
+    let userList = users.val();
+
+    let expoTokenList = [];
+    Object.keys(userList).forEach((key) => {
+      if (
+        userList[key].expoToken &&
+        !expoTokenList.includes(userList[key].expoToken.toString()) // token duplicate removal
+      ) {
+        expoTokenList.push(userList[key].expoToken.toString());
+      }
+    });
+    expoTokenList.forEach((item) => {
+      const message = {
+        to: item,
+        sound: 'default',
+        title,
+        body,
+        badge: 1,
+        data: data || {},
+      };
+      fetch('https://exp.host/--/api/v2/push/send', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Accept-encoding': 'gzip, deflate',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(message),
+      }).then((res) => console.log(res));
+    });
+  });
+};
+
 export const uploadImage = async (
   uri,
   user,

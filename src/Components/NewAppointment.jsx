@@ -3,22 +3,20 @@ import {
   TouchableOpacity,
   TextInput as TextBox,
   View,
-  Keyboard,
-  KeyboardAvoidingView,
-  Pressable,
   StyleSheet,
   Alert,
 } from 'react-native';
 import React, {useState} from 'react';
-import translate from 'app/Components/getLocalizedText';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import * as Calendar from 'expo-calendar';
 import * as Localization from 'expo-localization';
 import * as Permissions from 'expo-permissions';
-import appStyles from './AppStyles';
+import translate from './getLocalizedText';
 import Button from './Button';
-import {getUid, addAppointment} from '../Firebase';
+import appStyles from './AppStyles';
+import {getUid, addAppointment, sendPushNotification} from '../Firebase';
 
 export default function NewAppointment(props) {
   appointment = [
@@ -52,9 +50,12 @@ export default function NewAppointment(props) {
     if (!name || !address) {
       alert(translate('fillOutAllFields'));
     } else {
+      const title = "You've created a new appointment!";
+      const body = `You have a appointment ${name} at ${date} ${time} ,Don't forget to ${address}`;
+      await sendPushNotification(title, body);
       await SynchronizeCalendar();
       await addAppointment(uid, appointmentInfo);
-      props.navigation.navigate('Appointment');
+      props.setLowerPanelContent('Appointment');
     }
   };
 
@@ -139,83 +140,84 @@ export default function NewAppointment(props) {
   };
 
   return (
-    <Pressable style={appStyles.contentContainer} onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={appStyles.signupContainer}
-        enabled={false}
+    <KeyboardAwareScrollView
+      contentContainerStyle={{
+        flex: 1,
+        alignItems: 'center',
+        maxWidth: '100%',
+      }}
+      scrollEnabled
+    >
+      <View style={appStyles.TextInputAppointment.View}>
+        <TextBox
+          placeholder={translate('appointmentName')}
+          onChangeText={setName}
+          value={name}
+          style={appStyles.TextInputAppointment.TextInput}
+        />
+      </View>
+      <View style={appStyles.TextInputAppointment.View}>
+        <TextBox
+          placeholder={translate('appointmentAddress')}
+          onChangeText={setAddress}
+          value={address}
+          style={appStyles.TextInputAppointment.TextInput}
+        />
+      </View>
+      <View style={appStyles.TextInputAppointment.View}>
+        <TextBox
+          placeholder={translate('appointmentExtra')}
+          onChangeText={setExtra}
+          value={extra}
+          style={appStyles.TextInputAppointment.TextInput}
+        />
+      </View>
+      <View style={styles.container}>
+        <Text style={styles.textTitle}>{translate('Date')}</Text>
+        <TouchableOpacity onPress={showDatePicker}>
+          <Text style={styles.textStyle}>{date}</Text>
+        </TouchableOpacity>
+        <DateTimePickerModal
+          isVisible={isDatePickerVisible}
+          mode="date"
+          onConfirm={handleConfirm}
+          onCancel={hideDatePicker}
+          is24Hour
+          headerTextIOS="Pick a date"
+        />
+      </View>
+      <View style={styles.seperator} />
+      <View style={styles.container}>
+        <Text style={styles.textTitle}>{translate('Time')}</Text>
+        <TouchableOpacity onPress={showTimePicker}>
+          <Text style={styles.textStyle}>{time}</Text>
+        </TouchableOpacity>
+        <DateTimePickerModal
+          isVisible={isTimePickerVisible}
+          mode="time"
+          onConfirm={handleConfirmTime}
+          onCancel={hideTimePicker}
+          is24Hour
+          headerTextIOS="Pick a time"
+        />
+      </View>
+      <View style={styles.seperator} />
+      <View
+        style={{
+          width: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'absolute',
+          bottom: appStyles.win.height * 0.05,
+        }}
       >
-        <View style={appStyles.TextInputAppointment.View}>
-          <TextBox
-            placeholder={translate('appointmentName')}
-            onChangeText={setName}
-            value={name}
-            style={appStyles.TextInputAppointment.TextInput}
-          />
-        </View>
-        <View style={appStyles.TextInputAppointment.View}>
-          <TextBox
-            placeholder={translate('appointmentAddress')}
-            onChangeText={setAddress}
-            value={address}
-            style={appStyles.TextInputAppointment.TextInput}
-          />
-        </View>
-        <View style={appStyles.TextInputAppointment.View}>
-          <TextBox
-            placeholder={translate('appointmentExtra')}
-            onChangeText={setExtra}
-            value={extra}
-            style={appStyles.TextInputAppointment.TextInput}
-          />
-        </View>
-        <View style={styles.container}>
-          <Text style={styles.textTitle}>{translate('Date')}</Text>
-          <TouchableOpacity onPress={showDatePicker}>
-            <Text style={styles.textStyle}>{date}</Text>
-          </TouchableOpacity>
-          <DateTimePickerModal
-            isVisible={isDatePickerVisible}
-            mode="date"
-            onConfirm={handleConfirm}
-            onCancel={hideDatePicker}
-            is24Hour
-            headerTextIOS="Pick a date"
-          />
-        </View>
-        <View style={styles.seperator} />
-        <View style={styles.container}>
-          <Text style={styles.textTitle}>{translate('Time')}</Text>
-          <TouchableOpacity onPress={showTimePicker}>
-            <Text style={styles.textStyle}>{time}</Text>
-          </TouchableOpacity>
-          <DateTimePickerModal
-            isVisible={isTimePickerVisible}
-            mode="time"
-            onConfirm={handleConfirmTime}
-            onCancel={hideTimePicker}
-            is24Hour
-            headerTextIOS="Pick a time"
-          />
-        </View>
-        <View style={styles.seperator} />
-        <View
-          style={{
-            width: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            position: 'absolute',
-            bottom: appStyles.win.height * 0.05,
-          }}
-        >
-          <Button
-            style={appStyles.button}
-            text={translate('save')}
-            onPress={onPress}
-          />
-        </View>
-      </KeyboardAvoidingView>
-    </Pressable>
+        <Button
+          style={appStyles.button}
+          text={translate('save')}
+          onPress={onPress}
+        />
+      </View>
+    </KeyboardAwareScrollView>
   );
 }
 
@@ -246,6 +248,7 @@ const styles = StyleSheet.create({
       },
     }),
   },
+
   textStyle: {
     ...Platform.select({
       ios: {

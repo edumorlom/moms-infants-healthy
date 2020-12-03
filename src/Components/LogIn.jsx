@@ -1,6 +1,3 @@
-import 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import {
   Animated,
   Image,
@@ -12,8 +9,6 @@ import {
   TextInput as TextBox,
   Text,
   StyleSheet,
-  AsyncStorage,
-  NativeModules,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import appStyles from './AppStyles';
@@ -23,14 +18,7 @@ import SwipeUp from './SwipeUp';
 import background from '../../assets/background.gif';
 import loginMainImage from '../../assets/child.png';
 import translate from './getLocalizedText';
-import {} from 'react-native';
-import {
-  logIn,
-  registerForPushNotificationsAsync,
-  storeObjectInDatabase,
-  getUserInfo,
-} from '../Firebase';
-// import ForgotPasswordPage from './ForgotPasswordPage';
+import ForgotPasswordPage from './ForgotPasswordPage';
 
 export default LogIn = (props) => {
   const [email, setEmail] = useState(null);
@@ -49,89 +37,6 @@ export default LogIn = (props) => {
       useNativeDriver: false,
       duration: 2000,
     }).start();
-  };
-
-  const initState = {
-    uid: '',
-    email: '',
-    password: '',
-    fullName: '' /* babyGender: "", */,
-  };
-  const deviceLanguage =
-    Platform.OS === 'ios'
-      ? NativeModules.SettingsManager.settings.AppleLanguages[0] ||
-        NativeModules.SettingsManager.settings.AppleLocale
-      : NativeModules.I18nManager.localeIdentifier;
-  const [appState, setAppState] = useState(initState);
-  const [screen, setScreen] = useState('login');
-
-  useEffect(() => {
-    getCookies();
-  }, []);
-
-  let getCookies = async () => {
-    let email = await getCookie('email');
-    let password = await getCookie('password');
-    if (email && password) loginWithEmailPassword(email, password);
-    let fullName = await getCookie('fullName');
-    let uid = await getCookie('uid');
-
-    setAppState({
-      email,
-      password,
-      fullName,
-      uid,
-    });
-  };
-
-  let saveCookie = async (key, value) => {
-    try {
-      await AsyncStorage.setItem(key, value).then();
-    } catch (e) {
-      console.log(`Error storeData: ${e}`);
-    }
-  };
-
-  let getCookie = async (key) => {
-    try {
-      return await AsyncStorage.getItem(key);
-    } catch (e) {
-      console.log(`Error getData: ${e}`);
-    }
-  };
-
-  let loginWithEmailPassword = (email, password) => {
-    if (email && password) {
-      logIn(email, password).then(
-        (response) => {
-          loginWithUid(response.user.uid);
-          saveCookie('email', email);
-          saveCookie('password', password);
-          registerForPushNotificationsAsync(response.user);
-        },
-        (e) => {
-          alert('Invalid E-mail and Password Combination!');
-        }
-      );
-    } else {
-      alert('Please enter your E-Mail and Password!');
-    }
-  };
-
-  let loginWithUid = (uid) => {
-    let today = new Date();
-    let date = `${today.getFullYear()}-${
-      today.getMonth() + 1
-    }-${today.getDate()}@${today.getHours()}:${today.getMinutes()}`;
-    storeObjectInDatabase(uid, {
-      lastInteraction: date,
-      deviceLanguage,
-    });
-    getUserInfo(uid).on('value', (snapshot) => {
-      saveCookie('fullName', snapshot.val().fullName);
-      saveCookie('uid', uid);
-    });
-    props.navigation.navigate('Homepage');
   };
 
   return (
@@ -182,15 +87,13 @@ export default LogIn = (props) => {
               <View style={{height: appStyles.win.height * 0.03}} />
               <Button
                 style={appStyles.button}
-                onPress={() => {
-                  loginWithEmailPassword(email, password);
-                }}
+                onPress={() => props.login(email, password)}
                 text={translate('signInButton')}
               />
               <Button
                 style={forgotPassword}
                 text={translate('forgotPassword')}
-                onPress={() => props.navigation.navigate('ForgotPasswordPage')}
+                onPress={() => props.setScreen('forgotPassword')}
               />
             </View>
           </>
@@ -203,7 +106,7 @@ export default LogIn = (props) => {
         >
           <SwipeUp
             text={translate('swipeUpToSignUp')}
-            onSwipeUp={() => props.navigation.navigate('LetsGetStarted')}
+            onSwipeUp={() => props.setScreen('signup')}
           />
         </View>
       </Animated.View>
