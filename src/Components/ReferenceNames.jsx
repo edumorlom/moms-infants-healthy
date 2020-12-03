@@ -31,7 +31,7 @@ function ReferenceNames(props) {
         showsVerticalScrollIndicator={false}
       >
         <TouchableOpacity
-          style={{...appStyles.viewPlus, marginVertical: 10}}
+          style={appStyles.viewPlus}
           onPress={() => {
             props.navigation.navigate('AddReferenceNames');
           }}

@@ -3,11 +3,13 @@ import {
   TouchableOpacity,
   TextInput as TextBox,
   View,
+  Keyboard,
+  KeyboardAvoidingView,
+  Pressable,
   StyleSheet,
   Alert,
 } from 'react-native';
 import React, {useState} from 'react';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import translate from 'app/Components/getLocalizedText';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
@@ -137,14 +139,11 @@ export default function NewAppointment(props) {
   };
 
   return (
-    <View style={appStyles.contentContainer}>
-      <KeyboardAwareScrollView
-        contentContainerStyle={{
-          flex: 1,
-          alignItems: 'center',
-          maxWidth: '100%',
-        }}
-        scrollEnabled
+    <Pressable style={appStyles.contentContainer} onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={appStyles.signupContainer}
+        enabled={false}
       >
         <View style={appStyles.TextInputAppointment.View}>
           <TextBox
@@ -215,8 +214,8 @@ export default function NewAppointment(props) {
             onPress={onPress}
           />
         </View>
-      </KeyboardAwareScrollView>
-    </View>
+      </KeyboardAvoidingView>
+    </Pressable>
   );
 }
 

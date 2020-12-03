@@ -27,7 +27,8 @@
       "package": "edu.fiu.momsInfantsHealthy",
       "config": {
         "googleMaps": {"apiKey": "AIzaSyDZIfZXvGNacdzn-cBHdrzYakwHmh4DXok"}
-      }
+      },
+      "useNextNotificationsApi": true
     },
     "description": "",
     "githubUrl": "https://github.com/edumorlom/moms-infants-healthy"

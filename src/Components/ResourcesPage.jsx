@@ -14,8 +14,8 @@ export default function Resources(props) {
   let wicButton = (
     <SelectionButton
       style={appStyles.ImageOnRightSelectionButton}
-      text="Apply to WiC"
-      subtext="Application link and tips for applying to WIC"
+      text={translate('applyWIC')}
+      subtext={translate('WICSubtext')}
       icon={breastfeeding}
       onPress={() => {
         props.navigation.navigate('WICScreen');
@@ -26,8 +26,8 @@ export default function Resources(props) {
   let medicaidButton = (
     <SelectionButton
       style={appStyles.ImageOnRightSelectionButton}
-      text="Apply to Medicaid"
-      subtext="Application link and tips for applying to Medicaid"
+      text={translate('applyMedicaid')}
+      subtext={translate('medicaidSubtext')}
       icon={heart}
       onPress={() => {
         props.navigation.navigate('MedicaidScreen');

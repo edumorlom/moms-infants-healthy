@@ -43,15 +43,17 @@ function femaleCondomDoDontList() {
  */
 export function FemaleCondomDoDont() {
   return (
-    <ScrollView contentContainerStyle={appStyles.contentContainer}>
-      {femaleCondomDoDontList().map((fcdd, key) => (
-        <BetterMenu
-          style={appStyles.FemaleCondomMenu}
-          key={key}
-          text={translate(fcdd.dodont)}
-        />
-      ))}
-    </ScrollView>
+    <View style={appStyles.contentContainer}>
+      <ScrollView>
+        {femaleCondomDoDontList().map((fcdd, key) => (
+          <BetterMenu
+            style={appStyles.FemaleCondomMenu}
+            key={key}
+            text={translate(fcdd.dodont)}
+          />
+        ))}
+      </ScrollView>
+    </View>
   );
 }
 
@@ -100,16 +102,18 @@ function femaleCondomStepsList() {
  */
 export function FemaleCondomSteps() {
   return (
-    <ScrollView contentContainerStyle={appStyles.contentContainer}>
-      {femaleCondomStepsList().map((fcs, key) => (
-        <BetterMenu
-          style={appStyles.FemaleCondomMenuImage}
-          key={key}
-          text={translate(fcs.step)}
-          icon={fcs.icon}
-        />
-      ))}
-    </ScrollView>
+    <View style={appStyles.contentContainer}>
+      <ScrollView>
+        {femaleCondomStepsList().map((fcs, key) => (
+          <BetterMenu
+            style={appStyles.FemaleCondomMenuImage}
+            key={key}
+            text={translate(fcs.step)}
+            icon={fcs.icon}
+          />
+        ))}
+      </ScrollView>
+    </View>
   );
 }
 

@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, TextInput} from 'react-native';
+import {
+  View,
+  TextInput,
+  Keyboard,
+  KeyboardAvoidingView,
+  Pressable,
+} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useState} from 'react';
 import appStyles from './AppStyles';
@@ -38,14 +44,11 @@ function AddReferenceNames(props) {
   };
 
   return (
-    <View style={appStyles.contentContainer}>
-      <KeyboardAwareScrollView
-        contentContainerStyle={{
-          flex: 1,
-          alignItems: 'center',
-          maxWidth: '100%',
-        }}
-        scrollEnabled
+    <Pressable style={appStyles.contentContainer} onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={appStyles.signupContainer}
+        enabled={false}
       >
         <View style={appStyles.TextInput.View}>
           <TextInput
@@ -95,8 +98,8 @@ function AddReferenceNames(props) {
             onPress={onPress}
           />
         </View>
-      </KeyboardAwareScrollView>
-    </View>
+      </KeyboardAvoidingView>
+    </Pressable>
   );
 }
 

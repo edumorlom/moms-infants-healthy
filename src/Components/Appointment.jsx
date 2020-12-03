@@ -37,7 +37,7 @@ export default function Appointment(props) {
         showsVerticalScrollIndicator={false}
       >
         <TouchableOpacity
-          style={{...appStyles.viewPlus, marginVertical: 10}}
+          style={appStyles.viewPlus}
           onPress={() => {
             props.navigation.navigate('NewAppointment');
           }}

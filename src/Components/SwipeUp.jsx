@@ -18,7 +18,6 @@ export default function SwipeUp(props) {
       style={{
         width: appStyles.win.width,
         paddingTop: appStyles.win.height * 0.2,
-        bottom: '15%',
         alignItems: 'center',
       }}
     >

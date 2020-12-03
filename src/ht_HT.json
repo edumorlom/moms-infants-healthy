@@ -189,5 +189,16 @@
   "Yearly Exam": "Yearly Exam",
   "Emergency Testing": "Emergency Testing",
   "Miles": "Miles",
-  "facilities": "Fasilite yo"
+  "facilities": "Fasilite yo",
+  "nameFile": "Mete Non Dosye Ou",
+  "dosAndDonts": "Sa Pou Fè ak Sa Pou-w Pa Fè",
+  "steps": "Etaps",
+  "applyWIC": "Aplike nan WIC",
+  "WICSubtext": "Link Aplikasyon an ak konsèy pou aplike nan WIC",
+  "applyMedicaid": "Aplike nan Medicaid",
+  "medicaidSubtext": "Link Aplikasyon an ak konsèy pou aplike nan Medicaid",
+  "linkToWIC": "Link a WIC",
+  "linkToMedicaid": "Link a Medicaid",
+  "selectImmunization": "<<Chwazi Vaksin>>",
+  "resetPassword": "Chanjè Modpas Lan"
 }

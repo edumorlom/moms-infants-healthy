@@ -42,8 +42,18 @@ import {
   FemaleCondomDoDont,
   FemaleCondomSteps,
 } from './src/Components/FemaleCondom';
-import WICScreen from './src/Components/WICScreen';
-import MedicaidScreen from './src/Components/MedicaidScreen';
+import {
+  wicHome,
+  wicChecklist,
+  wicLocations,
+  wicFeeding,
+} from './src/Components/WICScreen';
+import LocationsInfo from './src/Components/LocationsInfo';
+import {
+  medicaidHome,
+  medicaidChecklist,
+  medicaidLocations,
+} from './src/Components/MedicaidScreen';
 import Appointment from './src/Components/Appointment';
 import NewAppointment from './src/Components/NewAppointment';
 import Documents from './src/Components/Documents';
@@ -52,6 +62,8 @@ import AddReferenceNames from './src/Components/AddReferenceNames';
 import STDInfo from './src/Components/STDInfo';
 import ImmunizationMenu from './src/Components/Immunization';
 import NewImmunization from './src/Components/NewImmunization';
+import ImmunizationSchedule from './src/Components/ImmunizationSchedule';
+import translate from './src/Components/getLocalizedText';
 // import * as firebase from "firebase";
 
 function App() {
@@ -60,9 +72,10 @@ function App() {
   };
 
   const Stack = createStackNavigator();
+  const navigationRef = React.createRef();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         initialRouteName="Login"
         screenOptions={{
@@ -70,6 +83,18 @@ function App() {
           headerTitleAlign: 'center',
           headerTitleStyle: styles.headerTitle,
           headerBackTitle: false,
+          headerRight: () => (
+            <View style={styles.logOutButton}>
+              <AntDesign
+                name="home"
+                size={28}
+                color={appStyles.pinkColor}
+                onPress={() => {
+                  navigationRef.current?.navigate('Homepage');
+                }}
+              />
+            </View>
+          ),
         }}
       >
         <Stack.Screen
@@ -139,20 +164,24 @@ function App() {
           name="SettingsScreen"
           component={SettingsScreen}
           options={{
-            title: 'Settings',
+            title: translate('welcomeSettings'),
           }}
         />
         <Stack.Screen
           name="ForgotPasswordPage"
           component={ForgotPasswordPage}
-          options={{title: 'Forgot Password'}}
+          options={{title: translate('forgotPassword')}}
         />
         <Stack.Screen
           name="ResourcesPage"
           component={ResourcesPage}
-          options={{title: 'Resources'}}
+          options={{title: translate('resources')}}
         />
-        <Stack.Screen name="Learn" component={Learn} />
+        <Stack.Screen
+          name="Learn"
+          component={Learn}
+          options={{title: translate('learn')}}
+        />
         <Stack.Screen
           name="STDSelection"
           component={STDSelection}
@@ -161,58 +190,97 @@ function App() {
         <Stack.Screen
           name="FemaleCondomMainScreen"
           component={FemaleCondomMainScreen}
-          options={{title: 'Female Condom'}}
+          options={{title: translate('FemaleCondom')}}
         />
         <Stack.Screen
           name="FemaleCondomDoDont"
           component={FemaleCondomDoDont}
-          options={{title: "Do's & Dont's"}}
+          options={{title: translate('dosAndDonts')}}
         />
         <Stack.Screen
           name="FemaleCondomSteps"
           component={FemaleCondomSteps}
-          options={{title: 'Steps'}}
+          options={{title: translate('steps')}}
         />
         <Stack.Screen
           name="WICScreen"
-          component={WICScreen}
+          component={wicHome}
           options={{title: 'WIC'}}
         />
         <Stack.Screen
+          name="WICChecklist"
+          component={wicChecklist}
+          options={{title: 'Checklist'}}
+        />
+        <Stack.Screen
+          name="WICLocations"
+          component={wicLocations}
+          options={{title: 'Locations'}}
+        />
+        <Stack.Screen
+          name="WICFeeding"
+          component={wicFeeding}
+          options={{title: 'Feeding'}}
+        />
+        <Stack.Screen
+          name="LocationsInfo"
+          component={LocationsInfo}
+          options={{title: 'Info'}}
+        />
+        <Stack.Screen
           name="MedicaidScreen"
-          component={MedicaidScreen}
+          component={medicaidHome}
           options={{title: 'Medicaid'}}
+        />
+        <Stack.Screen
+          name="MedicaidChecklist"
+          component={medicaidChecklist}
+          options={{title: 'Checklist'}}
+        />
+        <Stack.Screen
+          name="MedicaidLocations"
+          component={medicaidLocations}
+          options={{title: 'Locations'}}
         />
         <Stack.Screen
           name="ImmunizationScreen"
           component={ImmunizationMenu}
-          options={{title: 'Immunization'}}
+          options={{title: translate('ImmunizationRegister')}}
         />
         <Stack.Screen
           name="NewImmunization"
           component={NewImmunization}
-          options={{title: 'New Immunization'}}
+          options={{title: translate('newImmunization')}}
+        />
+        <Stack.Screen
+          name="ImmunizationSchedule"
+          component={ImmunizationSchedule}
+          options={{title: translate('ImmunizationSchedule')}}
         />
         <Stack.Screen
           name="Appointment"
           component={Appointment}
-          options={{title: 'Appointments'}}
+          options={{title: translate('appointment')}}
         />
         <Stack.Screen
           name="NewAppointment"
           component={NewAppointment}
-          options={{title: 'New Appointment'}}
+          options={{title: translate('newAppointment')}}
         />
-        <Stack.Screen name="Documents" component={Documents} />
+        <Stack.Screen
+          name="Documents"
+          component={Documents}
+          options={{title: translate('documents')}}
+        />
         <Stack.Screen
           name="ReferenceNames"
           component={ReferenceNames}
-          options={{title: 'References'}}
+          options={{title: translate('NameReference')}}
         />
         <Stack.Screen
           name="AddReferenceNames"
           component={AddReferenceNames}
-          options={{title: 'Add Reference'}}
+          options={{title: translate('AddNameReference')}}
         />
         <Stack.Screen
           name="STDInfo"

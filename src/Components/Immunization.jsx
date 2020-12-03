@@ -1,24 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import {
-  ScrollView,
-  View,
-  StyleSheet,
-  Linking,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {ScrollView, View, Linking, Image, TouchableOpacity} from 'react-native';
 import ImmunizationMenu from './ImmunizationMenu';
 import appStyles from './AppStyles';
 import Plus from '../../assets/plus.png';
 import Email from '../../assets/emailicon.png';
-import Notification from '../../assets/bellNotification.png';
+import Schedule from '../../assets/schedule.png';
 import {
   deleteImmunization,
   fetchImmunization,
   getUid,
   getUEmail,
 } from '../Firebase';
-import NewImmunization from './NewImmunization';
 
 export default function Immunization(props) {
   let _isMounted = false;
@@ -61,8 +53,10 @@ export default function Immunization(props) {
       console.log('sendEmailViaEmailApp -----> mail link is undefined');
     }
   };
-
-  let emailBody = JSON.stringify(objects, null, '  ');
+  let emailBody = JSON.stringify(objects, null, ' ').replace(
+    /[\{\[\]\"\}\,]+/g,
+    ''
+  );
 
   return (
     <View style={appStyles.contentContainer}>
@@ -72,7 +66,7 @@ export default function Immunization(props) {
       >
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
-            style={{...appStyles.viewPlus, marginVertical: 10}}
+            style={appStyles.viewPlus}
             onPress={() => {
               props.navigation.navigate('NewImmunization');
             }}
@@ -80,24 +74,24 @@ export default function Immunization(props) {
             <Image source={Plus} style={{height: 25, width: 25}} />
           </TouchableOpacity>
           <TouchableOpacity
-            style={{...appStyles.viewPlus, marginVertical: 10}}
+            style={appStyles.viewPlus}
             onPress={() => {
               sendEmailViaEmailApp(
                 email,
-                'NuMoms: Immunization Records',
-                objects
+                'NuMom: Immunization Records',
+                emailBody
               );
             }}
           >
             <Image source={Email} style={{height: 40, width: 40}} />
           </TouchableOpacity>
           <TouchableOpacity
-            style={{...appStyles.viewPlus, marginVertical: 10}}
+            style={appStyles.viewPlus}
             onPress={() => {
-              // need to implement
+              props.navigation.navigate('ImmunizationSchedule');
             }}
           >
-            <Image source={Notification} style={{height: 40, width: 40}} />
+            <Image source={Schedule} style={{height: 40, width: 40}} />
           </TouchableOpacity>
         </View>
         <View>

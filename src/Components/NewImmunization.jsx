@@ -4,7 +4,6 @@ import {
   TextInput as TextBox,
   View,
   StyleSheet,
-  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -36,20 +35,36 @@ export default function NewImmunization(props) {
 
   let immunizationArray = [
     '<<Select Immunization>>',
-    'DTaP',
-    'Hepatitis A',
-    'Hepatitis B',
-    'Hib',
-    'Influenza(yearly)',
-    'MMR ',
-    'Pneumococcal(PCV13)',
-    'Pneumococcal(PCV7)',
-    'Pneumococcal(PCV23)',
-    'Polio(IPV)',
-    'Polio(OPV)',
-    'Rotavirus(RV)',
-    'Varicella/Zoster',
-    'Other',
+    'First dose Hepatitis B',
+    'First dose diphtheria, tetanus, and pertussis (Dtap)',
+    'First dose polio (IPV)',
+    'First dose haemophilus influenzae Type B (Hib)',
+    'First dose pneumococcal vaccine (PCV)',
+    'First dose rotavirus',
+    'Second dose Hepatitis B',
+    'Third dose Hepatitis B',
+    'Second dose diphtheria, tetanus, and pertussis (Dtap)',
+    'Second dose polio (IPV)',
+    'Second dose haemophilus influenzae Type B (Hib)',
+    'Second dose pneumococcal vaccine (PCV)',
+    'Second dose rotavirus',
+    'Third dose diphtheria, tetanus, and pertussis (Dtap)',
+    'Third dose polio (IPV)',
+    'Third dose haemophilus influenzae Type B (Hib)',
+    'Third dose pneumococcal vaccine (PCV)',
+    'Third dose rotavirus',
+    'Flu vaccine',
+    'Fourth dose Hepatitis B',
+    'First dose Hepatitis A',
+    'First dose Measles, mumps, and rubella (MMR)',
+    'First dose Chickenpox (Varicella)',
+    'Fourth dose haemophilus influenzae Type B (Hib)',
+    'Fourth dose pneumococcal vaccine (PCV)',
+    'Second dose Hepatitis A',
+    'Fourth dose diphtheria, tetanus, and pertussis (Dtap)',
+    'Fourth dose polio (IPV)',
+    'Second dose Measles, mumps, and rubella (MMR)',
+    'Second dose Chickenpox (Varicella)',
   ];
 
   let immunizations = immunizationArray.map((immunization) => ({
@@ -62,7 +77,7 @@ export default function NewImmunization(props) {
       alert(translate('fillOutAllFields'));
     } else {
       await addImmunization(uid, immunizationInfo);
-      props.setLowerPanelContent('Immunization');
+      props.navigation.navigate('ImmunizationScreen');
     }
   };
 
@@ -77,74 +92,80 @@ export default function NewImmunization(props) {
   handleConfirm = (date) => {
     const newDate = moment(date).format('MM/DD/YYYY');
     setDate(newDate);
-    console.log('A date has been picked: ', newDate);
     hideDatePicker();
   };
 
   return (
-    <View style={appStyles.contentContainer}>
-      <KeyboardAwareScrollView
-        contentContainerStyle={{
-          flex: 1,
-          alignItems: 'center',
-          maxWidth: '100%',
-        }}
-        scrollEnabled
-      >
+    <KeyboardAwareScrollView
+      contentContainerStyle={{
+        flex: 1,
+        alignItems: 'center',
+        maxWidth: '100%',
+      }}
+      scrollEnabled
+    >
+      <View style={styles.container}>
+        <Text style={styles.textTitle}>{translate('ImmunizationType')}</Text>
         <Dropdown
-          containerStyle={{...styles.Dropdown, left: '30%'}}
-          dropdownOffset={{top: 0, bottom: 0, left: 0}}
-          pickerStyle={styles.Picker}
+          containerStyle={{
+            ...styles.Dropdown,
+          }}
+          pickerStyle={{
+            ...styles.Picker,
+          }}
           inputContainerStyle={{borderBottomColor: 'transparent'}}
           textAlign="center"
-          itemTextStyle={{alignSelf: 'center'}}
-          fontSize={12}
+          itemCount={8}
+          itemTextStyle={{alignSelf: 'left'}}
+          fontSize={26}
           data={immunizations}
-          label={translate('immunizations')}
-          value={type}
+          label={translate(immunizations)}
+          value={immunizations[0].value}
           useNativeDriver
           onChangeText={(value, index, data) => setType(value)}
         />
-        <View style={appStyles.TextInputAppointment.View}>
-          <TextBox
-            placeholder={translate('immunizationNotes')}
-            onChangeText={setNotes}
-            value={notes}
-            style={appStyles.TextInputAppointment.TextInput}
-          />
-        </View>
-        <View style={styles.container}>
-          <Text style={styles.textTitle}>{translate('Date')}</Text>
-          <TouchableOpacity onPress={showDatePicker}>
-            <Text style={styles.textStyle}>{date}</Text>
-          </TouchableOpacity>
-          <DateTimePickerModal
-            isVisible={isDatePickerVisible}
-            mode="date"
-            onConfirm={handleConfirm}
-            onCancel={hideDatePicker}
-            is24Hour
-            headerTextIOS="Pick a date"
-          />
-        </View>
-        <View style={styles.seperator} />
-        <View
-          style={{
-            width: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            position: 'absolute',
-            bottom: appStyles.win.height * 0.05,
-          }}
-        >
-          <Button
-            style={appStyles.button}
-            text={translate('save')}
-            onPress={onPress}
-          />
-        </View>
-      </KeyboardAwareScrollView>
-    </View>
+      </View>
+      <View style={appStyles.TextInputImmunization.View}>
+        <TextBox
+          placeholder={translate('immunizationNotes')}
+          onChangeText={setNotes}
+          value={notes}
+          multiline
+          numberOfLines={8}
+          style={appStyles.TextInputImmunization.TextInput}
+        />
+      </View>
+      <View style={styles.container}>
+        <Text style={styles.textTitle}>{translate('Date')}</Text>
+        <TouchableOpacity onPress={showDatePicker}>
+          <Text style={styles.textStyle}>{date}</Text>
+        </TouchableOpacity>
+        <DateTimePickerModal
+          isVisible={isDatePickerVisible}
+          mode="date"
+          onConfirm={handleConfirm}
+          onCancel={hideDatePicker}
+          is24Hour
+          headerTextIOS="Pick a date"
+        />
+      </View>
+      <View style={styles.seperator} />
+      <View
+        style={{
+          width: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'absolute',
+          bottom: appStyles.win.height * 0.1,
+        }}
+      >
+        <Button
+          style={appStyles.button}
+          text={translate('save')}
+          onPress={onPress}
+        />
+      </View>
+    </KeyboardAwareScrollView>
   );
 }
 
@@ -152,7 +173,6 @@ const styles = StyleSheet.create({
   Dropdown: {
     backgroundColor: 'white',
     borderColor: greyColor,
-    alignSelf: 'center',
     width: '100%',
     paddingTop: '5%',
     borderRadius: 5,
@@ -160,22 +180,23 @@ const styles = StyleSheet.create({
   Picker: {
     backgroundColor: 'white',
     ...shadow,
-    // borderColor: greyColor,
+    borderColor: greyColor,
     borderRadius: 15,
     alignSelf: 'center',
-    width: '70%',
+    width: '90%',
   },
   seperator: {
     height: 0.1,
-    width: '100%',
+    width: '80%',
     backgroundColor: '#979797',
     alignSelf: 'center',
-    marginVertical: 8,
+    marginVertical: 6,
   },
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: appStyles.win.height * 0.02,
+    paddingTop: appStyles.win.height * 0.03,
+    width: '80%',
   },
   textTitle: {
     ...Platform.select({

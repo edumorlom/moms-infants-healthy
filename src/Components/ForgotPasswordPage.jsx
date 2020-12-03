@@ -83,7 +83,7 @@ const ForgotPasswordPage = (props) => {
           >
             <Button
               style={appStyles.button}
-              text="Reset Password"
+              text={translate('resetPassword')}
               onPress={() => PasswordReset(email)}
             />
           </View>

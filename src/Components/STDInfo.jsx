@@ -14,12 +14,17 @@ export default function STDInfo({route}) {
   const {safeSex} = route.params;
 
   return (
-    <ScrollView contentContainerStyle={appStyles.contentContainer}>
-      <Menu title={translate('symptoms')} info={translate(symptoms)} />
-      <Menu title={translate('testing')} info={translate(diagnosis)} />
-      <Menu title={translate('treatment')} info={translate(treatment)} />
-      <Menu title={translate('consequences')} info={translate(consequences)} />
-      <Menu title={translate('safeSex')} info={translate(safeSex)} />
-    </ScrollView>
+    <View style={appStyles.contentContainer}>
+      <ScrollView>
+        <Menu title={translate('symptoms')} info={translate(symptoms)} />
+        <Menu title={translate('testing')} info={translate(diagnosis)} />
+        <Menu title={translate('treatment')} info={translate(treatment)} />
+        <Menu
+          title={translate('consequences')}
+          info={translate(consequences)}
+        />
+        <Menu title={translate('safeSex')} info={translate(safeSex)} />
+      </ScrollView>
+    </View>
   );
 }
