@@ -142,14 +142,9 @@ export const wicChecklist = () => {
 };
 
 export const wicLocations = (props) => {
-  const [fullPanel, setFullPanel] = useState(true);
   const [wics, setWICS] = useState([]);
   const [sortedWICS, setSortedWICS] = useState(null);
-  const [filters, setFilters] = useState([10000, 'All']);
   const [wicToView, setWICToView] = useState(null);
-  const [shelterToView, setShelterToView] = useState(null);
-  const [STDToView, setSTDToView] = useState(null);
-  const [lowerPanelContent, setLowerPanelContent] = useState('selection');
 
   useEffect(() => {
     fetchResources(); // Can only call one function inside useEffect when dealing with asyncs
@@ -230,14 +225,10 @@ export const wicLocations = (props) => {
     >
       <View style={appStyles.container}>
         <LocationsMap
-          onPress={() => setFullPanel(false)} // This does not work, explanation at the bottom **
-          setFullPanel={setFullPanel}
-          wicToView={wicToView}
-          setWICToView={setWICToView}
-          setLowerPanelContent={setLowerPanelContent}
           locations={wics}
           style={{}}
           navigation={props.navigation}
+          index={0}
         />
       </View>
       <View style={{height: 400}}>

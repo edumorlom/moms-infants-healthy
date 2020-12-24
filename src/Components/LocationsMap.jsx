@@ -89,9 +89,13 @@ export default function LocationsMap(props) {
               description={location.phoneNumber}
               pinColor={appStyles.blueColor}
               onPress={(e) => {
-                props.navigation.navigate('LocationsInfo', {
-                  location,
-                });
+                if (props.index == 0) {
+                  props.navigation.navigate('LocationsInfo', {
+                    location,
+                  });
+                } else if (props.index == -1) {
+                  alert('Already on that screen!');
+                }
               }}
             />
           ))}

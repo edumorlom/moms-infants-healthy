@@ -11,13 +11,6 @@ import LocationsMap from './LocationsMap';
 
 export default function LocationsInfo({route}) {
   const {location} = route.params;
-  const [fullPanel, setFullPanel] = useState(true);
-  const [locations, setLocations] = useState([]);
-  const [filters, setFilters] = useState([10000, 'All']);
-  const [locationToView, setLocationToView] = useState(null);
-  const [shelterToView, setShelterToView] = useState(null);
-  const [STDToView, setSTDToView] = useState(null);
-  const [lowerPanelContent, setLowerPanelContent] = useState('selection');
 
   let locationList = [location];
 
@@ -45,7 +38,6 @@ export default function LocationsInfo({route}) {
   };
 
   let locationInfo = `${location.address.street}\n${location.address.city}\n${location.address.state}, ${location.address.zipCode}\n${location.distance} miles`;
-
   return (
     <View
       style={{
@@ -55,15 +47,7 @@ export default function LocationsInfo({route}) {
       }}
     >
       <View style={appStyles.container}>
-        <LocationsMap
-          onPress={() => setFullPanel(false)} // This does not work, explanation at the bottom **
-          setFullPanel={setFullPanel}
-          locationToView={locationToView}
-          setLocationToView={setLocationToView}
-          setLowerPanelContent={setLowerPanelContent}
-          locations={locationList}
-          style={{}}
-        />
+        <LocationsMap locations={locationList} style={{}} index={-1} />
       </View>
       <View style={{height: 400}}>
         <ScrollView>
